@@ -1,5 +1,8 @@
 <?php
 
-echo "test";
+header ("Location: Developpement/Accueil.php");
+exit;
 
-header("Location : Developpement/Accueil.php");
+?>
+<p> Si vous n'etes pas redirigé automatiquement cliquez <a href="Developpement/Accueil.php">ici</a></p>
+<?php
