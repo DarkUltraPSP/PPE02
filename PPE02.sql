@@ -23,13 +23,6 @@ CREATE TABLE Commande
 	PRIMARY KEY(idCommande)
 );
 
-CREATE TABLE MENU 
-(
-	idMenu INT(11) NOT NULL,
-	nomMenu VARCHAR(64),
-	PRIMARY KEY(idMenu)
-);
-
 CREATE TABLE Produit_Commande
 (
 	idProduit INT(11) NOT NULL,
@@ -42,12 +35,6 @@ CREATE TABLE Produit
 	nomProduit VARCHAR(64),
 	prixProduit FLOAT,
 	PRIMARY KEY(idProduit)
-);
-
-CREATE TABLE MenuCommande
-( 
-	idMenu INT(11) NOT NULL,
-	idCommande INT(11)NOT NULL
 );
 
 CREATE TABLE ProduitType
@@ -70,14 +57,34 @@ CREATE TABLE Ingredient
 	PRIMARY KEY(idIngredient)
 );
 
-CREATE TABLE ProduitMenu
-(
-	idProduit INT(11) NOT NULL,
-	idMenu INT(11) NOT NULL
-);
-
 ALTER TABLE Commande
 ADD CONSTRAINT Commande_idClient
 FOREIGN KEY (idClient)
 REFERENCES Client(idClient);
+
+ALTER TABLE Produit 
+ADD CONSTRAINT Produit_idTypeProduit
+FOREIGN KEY (idTypeProduit)
+REFERENCES TypeProduit(idTypeProduit);
+
+ALTER TABLE ProduitCommande
+ADD CONSTRAINT ProduitCommande_idProduit
+FOREIGN KEY (idProduit)
+REFERENCES Produit(idProduit);
+
+ALTER TABLE ProduitCommande
+ADD CONSTRAINT ProduitCommande_idCommande
+FOREIGN KEY (idCommande)
+REFERENCES Commande(idCommande);
+
+ALTER TABLE IngredientProduit
+ADD CONSTRAINT IngredientProduit_idProduit
+FOREIGN KEY (idProduit)
+REFERENCES Produit(idProduit);
+
+ALTER TABLE IngredientProduit
+ADD CONSTRAINT IngredientProduit_idIngredient
+FOREIGN KEY (idIngredient)
+REFERENCES Ingredient(idIngredient);
+
 
