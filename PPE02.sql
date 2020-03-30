@@ -68,9 +68,16 @@ CREATE TABLE Ingredient
 	idIngredient INT(11) NOT NULL,
 	nomIngredient VARCHAR(64),
 	PRIMARY KEY(idIngredient)
-<<<<<<< HEAD
 );
 
-=======
+CREATE TABLE ProduitMenu
+(
+	idProduit INT(11) NOT NULL,
+	idMenu INT(11) NOT NULL
 );
->>>>>>> master
+
+ALTER TABLE Commande
+ADD CONSTRAINT Commande_idClient
+FOREIGN KEY (idClient)
+REFERENCES Client(idClient);
+
