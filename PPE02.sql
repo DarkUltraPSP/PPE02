@@ -68,5 +68,9 @@ CREATE TABLE Ingredient
 	idIngredient INT(11) NOT NULL,
 	nomIngredient VARCHAR(64),
 	PRIMARY KEY(idIngredient)
+<<<<<<< HEAD
 );
 
+=======
+);
+>>>>>>> master
