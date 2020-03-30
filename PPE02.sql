@@ -1,4 +1,7 @@
-CREATE DATABASE PPE02;
+DROP DATABASE IF EXISTS PPE02;
+
+CREATE DATABASE PPE02
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 USE DATABASE PPE02;
 
@@ -41,9 +44,8 @@ CREATE TABLE Produit
 	PRIMARY KEY(idProduit)
 );
 
-CREATE TABLE ContenuCommande
+CREATE TABLE MenuCommande
 ( 
-	idProduit INT(11) NOT NULL,
 	idMenu INT(11) NOT NULL,
 	idCommande INT(11)NOT NULL
 );
@@ -67,36 +69,4 @@ CREATE TABLE Ingredient
 	nomIngredient VARCHAR(64),
 	PRIMARY KEY(idIngredient)
 );
-
-ALTER TABLE Commande 
-ADD CONSTRAINT Commande_idClient
-FOREIGN KEY (idClient)
-REFERENCES Client(idClient);
-
-ALTER TABLE ContenuCommande
-ADD CONSTRAINT ContenuCommande_idProduit
-FOREIGN KEY (idProduit)
-REFERENCES Produit(idProduit);
-
-ALTER TABLE ContenuCommande
-ADD CONSTRAINT ContenuCommande_idMenu
-FOREIGN KEY (idMenu)
-REFERENCES Menu(idMenu);
-
-ALTER TABLE ContenuCommande
-ADD CONSTRAINT ContenuCommande_idCommande
-FOREIGN KEY (idCommande)
-REFERENCES Commande(idCommande); 
-
-ALTER TABLE Produit
-ADD CONSTRAINT Produit_idTypeProduit
-FOREIGN KEY (idTypeProduit)
-REFERENCES TypeProduit(idTypeProduit);
-
-ALTER TABLE Produit
-ADD CONSTRAINT Produit_idIngredient
-FOREIGN KEY (idIngredient)
-REFERENCES Ingredient(idIngredient);
-
-
 
