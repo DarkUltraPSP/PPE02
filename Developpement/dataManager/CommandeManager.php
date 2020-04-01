@@ -10,8 +10,8 @@ class CommandeManager
         
         $state = $login->prepare("SELECT * FROM Commande WHERE idCommande = ?");
         $state->bindParam(1, $idCommande);
-        $state-> execute();
-        $resultat = $state -> fetchAll();
+        $state->execute();
+        $resultat = $state->fetchAll();
         
         foreach ($resultat as $lineResultat)
         {
