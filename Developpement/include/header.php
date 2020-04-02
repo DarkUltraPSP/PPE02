@@ -1,3 +1,15 @@
+<?php
+include_once 'dataManager/databaseLinker.php';
+include_once 'dataManager/ClientManager.php';
+include_once 'dataManager/CommandeManager.php';
+
+include_once 'data/Client.php';
+include_once 'data/Commande.php';
+include_once 'data/Produit.php';
+include_once 'data/TypeProduit.php';
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -6,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="css/header.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="css/Organisation.css" media="all"/>
 
-        <link rel="icon" type="image/png" href="image/logo.ico" />
+        <link rel="icon" type="image/ico" href="image/tacos.ico" />
     </head>
     <body>
 <header>
