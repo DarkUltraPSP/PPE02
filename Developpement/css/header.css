@@ -8,3 +8,12 @@
 {
     height: 100px;
 }
+
+.image 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: auto;
+    width:100%;
+}
