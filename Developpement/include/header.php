@@ -22,8 +22,8 @@ include_once 'data/TypeProduit.php';
     <body>
 <header>
     <div class="bandeau">
-        <div class="image">
-            <img src="image/banniere2.jpg"/>
+        <img class ="banniere" src="image/banniere2.jpg" width="100%" heigth="auto"/>
+        <div class="image"> 
         </div>
         <div class="nomResto">
         </div>
