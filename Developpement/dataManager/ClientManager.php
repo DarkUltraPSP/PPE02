@@ -17,7 +17,7 @@ class ClientManager
         {
             $client->setIdClient($lineResultat["idClient"]);
             $client->setNomClient($lineResultat["nomClient"]);
-            $client->setPrenomClient($lineResultat["prenom"]);
+            $client->setPrenomClient($lineResultat["prenomClient"]);
             $client->setAdresse($lineResultat["adresse"]);
             $client->setPassword($lineResultat["password"]);
             $client->setMail($lineResultat["mail"]);

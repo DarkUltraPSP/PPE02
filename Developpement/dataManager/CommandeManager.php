@@ -36,7 +36,7 @@ class CommandeManager
         
         foreach($resultats as $lineResultat)
         {
-            $commande = ClientManager::findClient($lineResultat["idCommande"]);
+            $commande = CommandeManager::findCommande($lineResultat["idCommande"]);
             $tabCommande[] = $commande;
         }
         return $tabCommande;

@@ -19,7 +19,7 @@ CREATE TABLE Client
 CREATE TABLE Commande
 (
 	idCommande INT(11) NOT NULL AUTO_INCREMENT,
-	dateCommande DATE,
+	dateCommande DATETIME,
 	quantite int,
 	idClient int,
 	PRIMARY KEY (idCommande)
@@ -99,3 +99,11 @@ INSERT INTO Produit (nomProduit, prixProduit, idTypeProduit, descriptionProduit)
 ("Sprite", " ", "4", " "),
 ("Ice tea", " ", "4", " "),
 ("Eau", " ", "4", " ");
+
+INSERT INTO Client (nomClient, prenomClient, adresse, password, mail) VALUES
+("Cartman", "Eric", "SouthPark", "test", "cartmanlegros@gmail.com"),
+("LeGaulois", "Obelix", "Bretagne", "test", "obelixlegros@gmail.com");
+
+INSERT INTO Commande (dateCommande, quantite, idClient) VALUES
+("2020-02-25 18:50:00", 2, 1),
+("2020-02-25 18:50:00", 1, 2);
