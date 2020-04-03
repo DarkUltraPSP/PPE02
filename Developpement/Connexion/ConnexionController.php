@@ -9,7 +9,7 @@ include_once '../dataManager/ClientManager.php';
 include_once '../dataManager/CommandeManager.php';
 include_once '../dataManager/dataBaseLinker.php';
 
-session_name('user');
+session_name('client');
 session_start();
 
 function testConnexion($login, $password)
@@ -22,7 +22,7 @@ function testConnexion($login, $password)
 
         if ($_POST["mail"] == $client->getMail() && $_POST["password"] == $client->getPassword())
         {
-            $idUser = $user->getIdClient();
+            $idClient = $client->getIdClient();
             $nomClient = $client->getNom();
             $prenomClient = $client->getPrenom();
             $password = $client->getPassword();
@@ -34,7 +34,7 @@ function testConnexion($login, $password)
     return $codeRetour;
 }
 
-if (testConnexion($_POST["pseudo"], $_POST["password"]) == true)
+if (testConnexion($_POST["mail"], $_POST["password"]) == true)
 {
     foreach ($clients as $client)
     {

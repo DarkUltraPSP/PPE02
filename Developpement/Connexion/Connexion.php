@@ -4,8 +4,8 @@
     <p class="titre">Connexion</p>
     <div class="interieur">
         <form method="POST" action="ConnexionController.php">
-            <p class="titre2">Pseudo :</p>
-            <input class="barre" type ="text" name="mail" placeholder="Votre adresse mail" required/>
+            <p class="titre2">Mail :</p>
+            <input class="barre" type ="mail" name="mail" placeholder="Votre adresse mail" required/>
             <p class="titre2"> Mot de passe :</p>
             <input class="barre" type ="password" name="password" placeholder="Votre mot de passe" required/>
             </br>
