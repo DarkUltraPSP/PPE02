@@ -9,13 +9,13 @@ include_once '../dataManager/ClientManager.php';
 include_once '../dataManager/CommandeManager.php';
 include_once '../dataManager/dataBaseLinker.php';
 
-session_name('client');
+session_name("client");
 session_start();
 
-function testConnexion($login, $password)
+$clients = ClientManager::findAllClients();
+
+function testConnexion($mail, $password)
 {
-    $clients = ClientManager::findAllClients();
-    
     foreach ($clients as $client)
     {
         $codeRetour = false;
@@ -23,8 +23,8 @@ function testConnexion($login, $password)
         if ($_POST["mail"] == $client->getMail() && $_POST["password"] == $client->getPassword())
         {
             $idClient = $client->getIdClient();
-            $nomClient = $client->getNom();
-            $prenomClient = $client->getPrenom();
+            $nomClient = $client->getNomClient();
+            $prenomClient = $client->getPrenomClient();
             $password = $client->getPassword();
             $adresse = $client->getAdresse();
             $codeRetour = true;
@@ -40,13 +40,13 @@ if (testConnexion($_POST["mail"], $_POST["password"]) == true)
     {
         if ($_POST["mail"] == $client->getMail() && $_POST["password"] == $user->getPassword())
         {
-            $nomClient = $client->getNom();
-            $prenomClient = $client->getPrenom();
+            $idClient = $client->getIdClient();
+            $nomClient = $client->getNomClient();
+            $prenomClient = $client->getPrenomClient();
             $password = $client->getPassword();
             $adresse = $client->getAdresse();
         }
     }
-    
     $_SESSION["nomClient"] = $nomClient;
     $_SESSION["prenomClient"] = $prenomClient;
     $_SESSION["mail"] = $mail;
