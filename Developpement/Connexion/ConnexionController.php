@@ -12,8 +12,6 @@ include_once '../dataManager/dataBaseLinker.php';
 session_name('user');
 session_start();
 
-include_once "include/header.php";
-
 function testConnexion($login, $password)
 {
     $clients = ClientManager::findAllClients();
@@ -34,7 +32,7 @@ function testConnexion($login, $password)
         }
     }
     return $codeRetour;
-}///////////////////////////////////////////////////////
+}
 
 if (testConnexion($_POST["pseudo"], $_POST["password"]) == true)
 {
