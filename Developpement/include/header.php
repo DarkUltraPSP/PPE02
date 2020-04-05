@@ -3,10 +3,19 @@ include_once 'dataManager/databaseLinker.php';
 include_once 'dataManager/ClientManager.php';
 include_once 'dataManager/CommandeManager.php';
 include_once 'dataManager/ProduitManager.php';
+include_once 'dataManager/ProduitCommandeManager.php';
+include_once 'dataManager/TypeProduitManager.php';
 include_once 'data/Client.php';
 include_once 'data/Commande.php';
 include_once 'data/Produit.php';
 include_once 'data/TypeProduit.php';
+include_once 'data/ProduitCommande.php';
+
+$clients = ClientManager::findAllClients();
+$commandes = CommandeManager::findAllCommandes();
+$produits = ProduitManager::findAllProduits();
+$produitsCommande = ProduitCommandeManager::findAllProduits();
+$types = TypeProduitManager::findAllType();
 
 ?>
 <!DOCTYPE html>
@@ -16,18 +25,46 @@ include_once 'data/TypeProduit.php';
         <title>Tacos of all time</title>
         <link rel="stylesheet" type="text/css" href="css/header.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="css/Organisation.css" media="all"/>
-
+        <link rel="stylesheet" href="https://kit.fontawesome.com/92920db574.js" />
+        <script src="https://kit.fontawesome.com/92920db574.js" crossorigin="anonymous"></script>
         <link rel="icon" type="image/ico" href="image/tacos.ico" />
     </head>
     <body>
-<header>
-    <div class="bandeau">
-        <img class ="banniere" src="image/banniere2.jpg" width="100%" heigth="auto"/>
-        <div class="image"> 
+    <header>
+        <div class="banniere">
+            <div class="lateral"> </div>
+            <div class="nomResto">
+                
+                <a href="Accueil.php" class="toat"> TOAT </a>
+                <a href="Accueil.php" class="toatFull"> Tacos Of All Time </a>
+                
+            </div>
+            <div class="lateral">
+
+                <form class="optn" method="GET" action="Accueil.php">
+                    <input type="hidden" name="page" value="connexion" id="btn"/>
+                    <input type="submit" value="Connectez-vous" class="btn"/>
+                </form>
+                <form class="optn" method="GET" action="Accueil.php">
+                    <input type="hidden" name="page" value="inscription" id="btn"/>
+                    <input type="submit"  value="Inscrivez-vous" class="btn"/>
+                </form>
+                
+            </div>
         </div>
-        <div class="nomResto">
+    </header>
+        
+        <div class="Organisation">
+            <div class="menu">
+                <ul>
+                    <?php
+                    foreach ($types as $type)
+                    {
+                        ?>
+                    <li><?php echo $type->getLibelle() ?> </li>
+                        <?php
+                    }
+                    ?>
+                </ul>
+            </div>
         </div>
-        <div class="connexion">
-        </div>
-    </div>
-</header>

@@ -1,0 +1,10 @@
+.Organisation
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.menu
+{
+    height: 100%;
+}

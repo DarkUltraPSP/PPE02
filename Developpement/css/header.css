@@ -4,16 +4,128 @@
     margin: 0px;
 }
 
-.bandeau
+body
 {
-    height: 100px;
+    background-image: url("../image/fond.jpg");
+    min-height: 500px;
+}
+
+header
+{
+    background-color: #cb9b5b;
+    background-image: url("../image/banniere2.jpg");
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: 100% 100% ;
+    height: 125px;
 }
 
 .banniere
 {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    height: auto;
-    width:100%;
+    height: 100%;
+}
+
+.lateral
+{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    
+}
+
+.btn
+{
+    border: 4px black solid;
+    background: none;
+    min-width: 50%;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: color 0.4s linear;
+    position: relative;
+    transition: transform .5s;
+}
+
+.btn:hover
+{
+    background-color: black;
+    color: white;
+    transform: scale(1.10); 
+}
+
+.optn
+{
+    width: 100%;
+}
+
+.nomResto
+{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    text-align: center;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.toat
+{
+    font-family: 'Bernard MT Condensed';
+    font-size: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: typing 20s steps(36, end);
+    text-decoration: none;
+    color: black;
+}
+
+@keyframes typing 
+{
+    from { width: 0 }
+    to { width: 100% }
+}
+
+.toatFull
+{
+    text-decoration: none;
+    color: black;
+    font-family: 'Bookman Old Style';
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 3s;
+    
+}
+
+@keyframes fadeInOpacity 
+{
+    0% 
+    {
+        opacity: 0;
+    }
+    100% 
+    {
+        opacity: 1;
+    }
+}
+
+.panier
+{
+    display: flex;
+}
+
+.basket
+{
+    color: black;
+    font-size: 50px;
 }
