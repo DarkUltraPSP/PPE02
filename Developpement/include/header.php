@@ -56,15 +56,17 @@ $types = TypeProduitManager::findAllType();
         
         <div class="Organisation">
             <div class="menu">
-                <ul>
-                    <?php
-                    foreach ($types as $type)
-                    {
-                        ?>
-                    <li><?php echo $type->getLibelle() ?> </li>
-                        <?php
-                    }
+                <?php
+                foreach ($types as $type)
+                {
                     ?>
-                </ul>
+                <form method="GET" action="Accueil.php">
+                    <input type="hidden" name="type" value="<?php echo $type->getIdTypeProduit() ?>"/>
+                    <input type="submit" value="<?php echo $type->getLibelle(); ?>" id="menu-btn" />
+                </form>
+                    <?php
+                }
+                ?>
             </div>
-        </div>
+            <div class="displayVue">
+                <!--Mettre l'include once ici-->
