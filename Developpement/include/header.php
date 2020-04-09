@@ -5,6 +5,7 @@ include_once 'dataManager/CommandeManager.php';
 include_once 'dataManager/ProduitManager.php';
 include_once 'dataManager/ProduitCommandeManager.php';
 include_once 'dataManager/TypeProduitManager.php';
+
 include_once 'data/Client.php';
 include_once 'data/Commande.php';
 include_once 'data/Produit.php';
@@ -25,6 +26,7 @@ $types = TypeProduitManager::findAllType();
         <title>Tacos of all time</title>
         <link rel="stylesheet" type="text/css" href="css/header.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="css/Organisation.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="css/footer.css" media="all"/>
         <link rel="stylesheet" href="https://kit.fontawesome.com/92920db574.js" />
         <script src="https://kit.fontawesome.com/92920db574.js" crossorigin="anonymous"></script>
         <link rel="icon" type="image/ico" href="image/tacos.ico" />
@@ -55,18 +57,27 @@ $types = TypeProduitManager::findAllType();
     </header>
         
         <div class="Organisation">
+            
             <div class="menu">
-                <?php
-                foreach ($types as $type)
-                {
-                    ?>
-                <form method="GET" action="Accueil.php">
-                    <input type="hidden" name="type" value="<?php echo $type->getIdTypeProduit() ?>"/>
-                    <input type="submit" value="<?php echo $type->getLibelle(); ?>" id="menu-btn" />
-                </form>
-                    <?php
-                }
-                ?>
+                
+                <div class="indicator">
+                    <i class="fas fa-bars dropdown"></i>
+                </div>
+                
+                <div class="boutons-menu">
+                    
+                    <form method="GET" action="Accueil.php">
+                        <input type="hidden" name="page" value="commander"/>
+                        <input type="submit" value="Commander" id="menu-btn" />
+                    </form>
+
+                    <form method="GET" action="Accueil.php">
+                        <input type="hidden" name="page" value="contact"/>
+                        <input type="submit" value="Nous contacter" id="menu-btn" />
+                    </form>
+                    
+                </div>
             </div>
+            
             <div class="displayVue">
-                <!--Mettre l'include once ici-->
+                <div class="content">

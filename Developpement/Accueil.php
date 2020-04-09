@@ -1,8 +1,24 @@
 <?php
 include_once 'include/header.php';
-//echo "<pre>";
-//print_r(TypeProduitManager::findAllType());
-//echo "</pre>";
+
+if (!empty ($_GET))
+{
+    switch ($_GET['page'])
+    {
+        case 'commander':
+            include_once 'Commande/CommandeController.php';
+            break;
+        case 'connexion':
+            include_once 'Connexion/Connexion.php';
+            break;
+    }
+}
+else if (empty($_GET))
+{
+    ?>
+<h class="bvn"> Bienvenue sur Tacos Of All Time  </h>
+    <?php
+}
 ?>
 
 <?php

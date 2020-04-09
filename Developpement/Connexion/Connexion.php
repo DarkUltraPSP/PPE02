@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" type="text/css" href="css/connexion.css" media="all"/>
 <div class="bloc">
     <p class="titre">Connexion</p>

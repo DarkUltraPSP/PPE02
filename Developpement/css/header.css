@@ -118,14 +118,3 @@ header
         opacity: 1;
     }
 }
-
-.panier
-{
-    display: flex;
-}
-
-.basket
-{
-    color: black;
-    font-size: 50px;
-}
