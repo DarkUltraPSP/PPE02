@@ -7,6 +7,8 @@ if (!empty ($_GET))
     {
         case 'commander':
             include_once 'Commande/CommandeController.php';
+            $commande = new CommandeController();
+            $commande->includeView();
             break;
         case 'connexion':
             include_once 'Connexion/Connexion.php';

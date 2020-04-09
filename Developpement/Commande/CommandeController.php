@@ -2,8 +2,10 @@
 
 class CommandeController
 {
-    public static function includeView()
+    public function includeView()
     {
         include_once 'Commande.php';
     }
+    
+    
 }

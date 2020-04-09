@@ -2,7 +2,9 @@
 
 echo "page commande";
 ?>
-<link rel="stylesheet" type="text/css" href="Commande.css" media="all"/>
+<head>
+    <link rel="stylesheet" type="text/css" href="Commande.css" media="all"/>
+</head>
 
 <div class="box">
     
