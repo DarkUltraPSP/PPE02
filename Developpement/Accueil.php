@@ -9,12 +9,16 @@ if (!empty ($_GET))
             include_once 'Commande/CommandeController.php';
             $commande = new CommandeController();
             $commande->includeView();
+            $commande->displayTacos();
+            
             break;
+
         case 'connexion':
             include_once 'Connexion/Connexion.php';
             include_once 'Connexion/ConnexionController.php';
             $instanceController = new ConnexionController();
             $instanceController->includeView();
+            
             break;
     }
 }

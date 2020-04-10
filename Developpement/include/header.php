@@ -80,4 +80,5 @@ $types = TypeProduitManager::findAllType();
             </div>
             
             <div class="displayVue">
+                <div class="opacity"></div>
                 <div class="content">
