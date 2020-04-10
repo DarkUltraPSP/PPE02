@@ -12,10 +12,9 @@ include_once '../dataManager/dataBaseLinker.php';
 session_name("client");
 session_start();
 
-$clients = ClientManager::findAllClients();
-
 function testConnexion($mail, $password)
 {
+    $clients = ClientManager::findAllClients();
     foreach ($clients as $client)
     {
         $codeRetour = false;
@@ -36,17 +35,23 @@ function testConnexion($mail, $password)
 
 if (testConnexion($_POST["mail"], $_POST["password"]) == true)
 {
-    foreach ($clients as $client)
-    {
-        if ($_POST["mail"] == $client->getMail() && $_POST["password"] == $user->getPassword())
+    $clients = ClientManager::findAllClients();
+    
+        foreach ($clients as $client)
         {
-            $idClient = $client->getIdClient();
-            $nomClient = $client->getNomClient();
-            $prenomClient = $client->getPrenomClient();
-            $password = $client->getPassword();
-            $adresse = $client->getAdresse();
+            if (!empty($_POST["mail"])&& !empty($_POST["password"]))
+            {   
+                if ($_POST["mail"] == $client->getMail() && $_POST["password"] == $user->getPassword())
+                {
+                    $idClient = $client->getIdClient();
+                    $nomClient = $client->getNomClient();
+                    $prenomClient = $client->getPrenomClient();
+                    $password = $client->getPassword();
+                    $adresse = $client->getAdresse();
+                }
+            }   
+    
         }
-    }
     $_SESSION["nomClient"] = $nomClient;
     $_SESSION["prenomClient"] = $prenomClient;
     $_SESSION["mail"] = $mail;
