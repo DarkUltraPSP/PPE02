@@ -27,6 +27,7 @@ $types = TypeProduitManager::findAllType();
         <link rel="stylesheet" type="text/css" href="css/header.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="css/Organisation.css" media="all"/>
         <link rel="stylesheet" type="text/css" href="css/footer.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="Commande.css" media="all"/>
         <link rel="stylesheet" href="https://kit.fontawesome.com/92920db574.js" />
         <script src="https://kit.fontawesome.com/92920db574.js" crossorigin="anonymous"></script>
         <link rel="icon" type="image/ico" href="image/tacos.ico" />
@@ -80,5 +81,4 @@ $types = TypeProduitManager::findAllType();
             </div>
             
             <div class="displayVue">
-                <div class="opacity"></div>
                 <div class="content">

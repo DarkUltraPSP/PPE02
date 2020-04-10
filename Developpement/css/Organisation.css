@@ -115,14 +115,12 @@
     flex-wrap: wrap;
     min-height: 800px;
     border-radius: 30px;
-    background-color: white;
-    opacity: 70%;
+    background-color: #ffffffb3;
     border: 2px solid;
 }
 
 .content
 {
-    opacity: 1;
     animation-name: fadeInDisplayVue;
     animation-iteration-count: 1;
     animation-timing-function: ease-in;
