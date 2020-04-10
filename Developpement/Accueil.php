@@ -9,8 +9,8 @@ if (!empty ($_GET))
             include_once 'Commande/CommandeController.php';
             $commande = new CommandeController();
             $commande->includeView();
-            $commande->displayTacos();
-            
+            $commande->displayProduit();
+
             break;
 
         case 'connexion':
