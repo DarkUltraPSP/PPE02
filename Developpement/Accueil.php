@@ -20,6 +20,11 @@ if (!empty ($_GET))
             $instanceController->includeView();
             
             break;
+        
+        case 'inscription':
+            include_once 'Inscription/Inscription.php';
+            $inscrire = new InscriptionController();
+            $inscrire->includeView();
     }
 }
 else if (empty($_GET))
