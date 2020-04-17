@@ -9,7 +9,6 @@ if (!empty ($_GET))
             include_once 'Commande/CommandeController.php';
             $commande = new CommandeController();
             $commande->includeView();
-            $commande->displayProduit();
 
             break;
 
@@ -31,6 +30,10 @@ else if (empty($_GET))
 {
     ?>
 <h class="bvn"> Bienvenue sur Tacos Of All Time  </h>
+<form method="GET" action="Accueil.php">
+    <input type="hidden" name="page" value="commander"/>
+    <input type="submit" value="Commander"/>
+</form>
     <?php
 }
 ?>

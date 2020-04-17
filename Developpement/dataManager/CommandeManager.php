@@ -41,4 +41,11 @@ class CommandeManager
         }
         return $tabCommande;
     }
+    
+    public static function insertCommande($commande)
+    {
+        $login = dataBaseLinker::getConnexion();
+
+        
+    }
 }

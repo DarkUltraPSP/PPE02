@@ -1,6 +1,27 @@
-.box
+.tacos
 {
-    width: 100px;
-    height: 200px;
-    background-color: red;
+    display: flex;
+    flex-direction: row;
+}
+
+.displayProd
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    min-width: 50px;
+    border-radius: 5px;
+    border: 4px solid;
+    margin: 10px;
+    padding: 10px;
+}
+
+/*.check
+{
+    visibility: hidden;
+}*/
+
+.displayProd
+{
+    background-color: dimgray;
 }
