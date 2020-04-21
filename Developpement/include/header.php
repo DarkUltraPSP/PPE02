@@ -1,4 +1,10 @@
 <?php
+
+if (!isset($_SESSION))
+{
+    session_name("Users");
+    session_start();
+}
 include_once 'dataManager/databaseLinker.php';
 include_once 'dataManager/ClientManager.php';
 include_once 'dataManager/CommandeManager.php';
@@ -78,6 +84,11 @@ $types = TypeProduitManager::findAllType();
                 </div>
                 
                 <div class="boutons-menu">
+                    
+                    <form method="GET" action="Accueil.php">
+                        <input type="hidden" name="page" value="carte"/>
+                        <input type="submit" value="La Carte" id="menu-btn" />
+                    </form>
                     
                     <form method="GET" action="Accueil.php">
                         <input type="hidden" name="page" value="commander"/>

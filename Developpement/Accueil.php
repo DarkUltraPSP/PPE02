@@ -24,6 +24,8 @@ if (!empty ($_GET))
             include_once 'Inscription/Inscription.php';
             $inscrire = new InscriptionController();
             $inscrire->includeView();
+            
+            break;
     }
 }
 else if (empty($_GET))
