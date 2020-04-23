@@ -2,81 +2,81 @@
 $produits = ProduitManager::findAllProduits();
 $types = TypeProduitManager::findAllType();
 
-
-?>
-<?php
-if (empty($_SESSION["size"]))
+if (empty($_GET['idType']))
 {
-?>
-<div class="phraseChoix">
-    <h> Sélectionnez la taille de votre tacos :</h>
-</div>
-<form method="POST" action="Accueil.php?page=commander">
+    ?>
+<h> Nos produits </h>
 
-    <div class="produit">
-<?php
-    foreach ($produits as $prod)
+    <?php
+    foreach ($types as $type)
     {
-        if ($prod->getIdType() == 1)
+        if ($type->getIdTypeProduit() != 2 && $type->getIdTypeProduit() != 3)
         {
-            ?>
-        <div class="displayProduit">
-            <div class="nomProduits">
-            <?php
-            echo $prod->getNomProduit();
-            ?>
-            </div>
-            <div class="DescriptionProduits">
-            <?php
-            echo $prod->getDescription();
-            ?> 
-            </div>
-            <input type="radio" name="tacosSize" value="<?php echo $prod->getIdProduit() ?>" id="<?php echo $prod->getIdProduit() ?>" class="check"/>
-            <label for="<?php echo $prod->getIdProduit() ?>"> Selectionner </label>
-        </div>
-            <?php
+    ?>
+<div>
+    <a href="Accueil.php?page=commander&idType=<?php echo $type->getIdTypeProduit(); ?>"> Nos <?php echo $type->getLibelle(); ?> </a>
+</div>
+    <?php
         }
     }
-?>
-    </div>
-    <input type="submit" value="Valider"/>
-
-</form>
-<?php
 }
-else 
+else
 {
-    switch ($_SESSION["size"])
+    if ($_GET['idType'] == 1)
     {
-        case 1:
-            ?>
-<form method="POST" action="Accueil.php?page=commander">
-
-    <div class="produit">
+        ?>
+<form method="POST" action="Accueil.php?page=commander&idType=2">
 <?php
-            foreach ($produits as $prod)
+        foreach ($produits as $prod)
+        {
+            if ($prod->getIdType() == $_GET['idType'])
             {
-                if ($prod->getIdType() == 2)
-                {
-                    ?>
-                    <div class="nomProduits">
-                        <?php
-                        echo $prod->getNomProduit();
-                        ?>
-                    </div>
-                    <div class="DescriptionProduits">
-                        <?php
-                        echo $prod->getDescription();
-                        ?>
-                    </div>
-                    <?php
-                }
-            }
-            ?>
+                ?>
+    <div>
+    <?php
+                echo $prod->getNomProduit();
+                echo $prod->getDescription();
+                echo $prod->getPrixProduit()."€";
+                ?>
+    <input type="radio" value="<?php echo $prod->getIdProduit(); ?>" name="produit" id="<?php echo $prod->getIdProduit() ?>"/>
+    <label for="<?php echo $prod->getIdProduit() ?>"> Sélectionner </label>
     </div>
+    <?php
+            }
+        }
+        ?>
+    <input type="submit" value="Etape suivante"/>
 </form>
-        <?php
-            break;
+<?php
+    }
+    else
+    {
+        ?>
+<form method="POST" action="Accueil.php?page=commander&idType=2">
+<?php
+        foreach ($produits as $prod)
+        {
+            if ($prod->getIdType() == $_GET['idType'])
+            {
+                ?>
+    <div>
+    <?php
+                echo $prod->getNomProduit();
+                echo $prod->getDescription();
+                if ($prod->getPrixProduit() != 0)
+                {
+                    echo $prod->getPrixProduit()."€";
+                }
+                ?>
+        <input type="radio" value="<?php echo $prod->getIdProduit(); ?>" name="produit" id="<?php echo $prod->getIdProduit() ?>"/>
+        <label for="<?php echo $prod->getIdProduit() ?>"> Sélectionner </label>
+    </div>
+    <?php
+            }
+        }
+        ?>
+    <input type="submit" value="Etape suivante"/>
+</form>
+<?php
     }
 }
-print_r($_SESSION);
