@@ -50,7 +50,6 @@ if (testConnexion($_POST["mail"], $_POST["password"]) == true)
                     $adresse = $client->getAdresse();
                 }
             }   
-    
         }
     $_SESSION["nomClient"] = $nomClient;
     $_SESSION["prenomClient"] = $prenomClient;
