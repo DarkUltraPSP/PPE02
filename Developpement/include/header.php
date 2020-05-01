@@ -1,28 +1,38 @@
 <?php
 
+include_once 'data/Boisson.php';
+include_once 'data/BoissonPanier.php';
+include_once 'data/Client.php';
+include_once 'data/ClientPanier.php';
+include_once 'data/Frites.php';
+include_once 'data/FritesPanier.php';
+include_once 'data/Panier.php';
+include_once 'data/Tacos.php';
+include_once 'data/TacosPanier.php';
+include_once 'data/Sauce.php';
+include_once 'data/SauceTacos.php';
+include_once 'data/Viande.php';
+include_once 'data/ViandeTacos.php';
+
+include_once 'dataManager/BoissonManager.php';
+include_once 'dataManager/BoissonPanierManager.php';
+include_once 'dataManager/ClientManager.php';
+include_once 'dataManager/ClientPanierManager.php';
+include_once 'dataManager/FritesManager.php';
+include_once 'dataManager/FritesPanierManager.php';
+include_once 'dataManager/PanierManager.php';
+include_once 'dataManager/TacosManager.php';
+include_once 'dataManager/TacosPanierManager.php';
+include_once 'dataManager/SauceManager.php';
+include_once 'dataManager/SauceTacosManager.php';
+include_once 'dataManager/ViandeManager.php';
+include_once 'dataManager/ViandeTacosManager.php';
+
 if (!isset($_SESSION))
 {
     session_name("Users");
     session_start();
 }
-include_once 'dataManager/databaseLinker.php';
-include_once 'dataManager/ClientManager.php';
-include_once 'dataManager/CommandeManager.php';
-include_once 'dataManager/ProduitManager.php';
-include_once 'dataManager/ProduitCommandeManager.php';
-include_once 'dataManager/TypeProduitManager.php';
-
-include_once 'data/Client.php';
-include_once 'data/Commande.php';
-include_once 'data/Produit.php';
-include_once 'data/TypeProduit.php';
-include_once 'data/ProduitCommande.php';
-
-$clients = ClientManager::findAllClients();
-$commandes = CommandeManager::findAllCommandes();
-$produits = ProduitManager::findAllProduits();
-$produitsCommande = ProduitCommandeManager::findAllProduits();
-$types = TypeProduitManager::findAllType();
 
 ?>
 <!DOCTYPE html>

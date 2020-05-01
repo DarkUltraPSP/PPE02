@@ -1,36 +1,33 @@
 <?php
 
-class ClientManager
+class ClientManager 
 {
     public static function findClient($idClient)
     {
-        $login = DatabaseLinker::getConnexion();
-        
         $client = new Client();
+        $login = DatabaseLinker::getConnexion();
         
         $state = $login->prepare("SELECT * FROM Client WHERE idClient = ?");
         $state->bindParam(1, $idClient);
-        $state-> execute();
-        $resultat = $state -> fetchAll();
+        $state->execute();
+        $resultat = $state->fetchAll();
         
         foreach ($resultat as $lineResultat)
         {
             $client->setIdClient($lineResultat["idClient"]);
-            $client->setNomClient($lineResultat["nomClient"]);
-            $client->setPrenomClient($lineResultat["prenomClient"]);
+            $client->setNom($lineResultat["nomClient"]);
+            $client->setPrenom($lineResultat["prenomClient"]);
             $client->setAdresse($lineResultat["adresse"]);
-            $client->setPassword($lineResultat["password"]);
-            $client->setMail($lineResultat["mail"]);
         }
+        
         return $client;
     }
     
     public static function findAllClients()
     {
-        $login = dataBaseLinker::getConnexion();
-        
         $client = new Client();
         $tabClient = [];
+        $login = dataBaseLinker::getConnexion();
         
         $state = $login->prepare("SELECT * FROM Client");
         $state->execute();
@@ -41,6 +38,7 @@ class ClientManager
             $client = ClientManager::findClient($lineResultat["idClient"]);
             $tabClient[] = $client;
         }
+        
         return $tabClient;
     }
 }

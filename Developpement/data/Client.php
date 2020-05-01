@@ -3,58 +3,40 @@
 class Client 
 {
     private $idClient;
-    private $nomClient;
-    private $prenomClient;
+    private $nom;
+    private $prenom;
     private $adresse;
-    private $password;
-    private $mail;
     
     function getIdClient() {
         return $this->idClient;
     }
 
-    function getNomClient() {
-        return $this->nomClient;
+    function getNom() {
+        return $this->nom;
     }
 
-    function getPrenomClient() {
-        return $this->prenomClient;
+    function getPrenom() {
+        return $this->prenom;
     }
 
     function getAdresse() {
         return $this->adresse;
     }
 
-    function getPassword() {
-        return $this->password;
-    }
-
-    function getMail() {
-        return $this->mail;
-    }
-
     function setIdClient($idClient) {
         $this->idClient = $idClient;
     }
 
-    function setNomClient($nomClient) {
-        $this->nomClient = $nomClient;
+    function setNom($nom) {
+        $this->nom = $nom;
     }
 
-    function setPrenomClient($prenomClient) {
-        $this->prenomClient = $prenomClient;
+    function setPrenom($prenom) {
+        $this->prenom = $prenom;
     }
 
     function setAdresse($adresse) {
         $this->adresse = $adresse;
-    }
-
-    function setPassword($password) {
-        $this->password = $password;
-    }
-
-    function setMail($mail) {
-        $this->mail = $mail;
     }
 
 }
