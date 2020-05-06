@@ -15,6 +15,7 @@ if (!empty ($_GET))
             }
             //session_destroy();
             print_r($_SESSION);
+            
             break;
 
         case 'connexion':
@@ -29,6 +30,13 @@ if (!empty ($_GET))
             include_once 'Inscription/Inscription.php';
             $inscrire = new InscriptionController();
             $inscrire->includeView();
+            
+            break;
+        
+        case "contact":
+            include_once 'Contact/ContactController.php';
+            $contact = new ContactController();
+            $contact->includeView();
             
             break;
     }
