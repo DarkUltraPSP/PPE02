@@ -27,6 +27,7 @@ include_once 'dataManager/SauceManager.php';
 include_once 'dataManager/SauceTacosManager.php';
 include_once 'dataManager/ViandeManager.php';
 include_once 'dataManager/ViandeTacosManager.php';
+include_once 'dataManager/databaseLinker.php';
 
 if (!isset($_SESSION))
 {

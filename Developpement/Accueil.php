@@ -9,13 +9,11 @@ if (!empty ($_GET))
             include_once 'Commande/CommandeController.php';
             $commande = new CommandeController();
             $commande->includeView();
-            if (!empty($_POST['idType']))
+            if (!empty($_POST["size"]))
             {
-                if ($_POST['idType'] == 1)
-                {
-                    $commande->size($_POST['idProduit']);
-                }
+                $_SESSION['size'] = $_POST["size"];
             }
+            //session_destroy();
             print_r($_SESSION);
             break;
 

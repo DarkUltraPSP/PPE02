@@ -22,7 +22,7 @@ class ViandeManager
         return $viande;
     }
     
-    public static function findAllViande()
+    public static function findAllViandes()
     {
         $viande = new Viande();
         $tabViande = [];

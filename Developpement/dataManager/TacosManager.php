@@ -5,7 +5,7 @@ class TacosManager
     public static function findTacos($idTacos)
     {
         $tacos = new Tacos();
-        $login = DatabaseLinker::getConnexion();
+        $login = databaseLinker::getConnexion();
         
         $state = $login->prepare("SELECT * FROM Tacos WHERE idTacos = ?");
         $state->bindParam(1, $idTacos);

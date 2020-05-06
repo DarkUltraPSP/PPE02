@@ -1,0 +1,87 @@
+.divTitre
+{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.produits
+{
+    font-size: 45px;
+    font-family: 'Arial Rounded MT Bold';
+}
+
+.bloc-commande
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.Choix
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: solid 4px black;
+    background-color: white;
+    min-height: 250px;
+    min-width: 200px;
+    text-decoration: none;
+}
+
+.Choix h
+{
+    font-family: 'Bernard MT Condensed';
+    font-size: 30px;
+    color: black;
+}
+
+.tacosSize
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+    border: solid 4px black;
+    background: white;
+    min-height: 250px;
+    min-width: 200px;
+    text-decoration: none;
+}
+
+form input[type="radio"]:checked + label 
+{
+   background-color: yellow;
+}
+
+.selectSize
+{
+    font-size: 35px;
+    font-family: 'Arial Rounded MT Bold';
+}
+
+.SizeTacos
+{
+    font-size: 25px;
+}
+
+.viande
+{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 20px;
+    border: solid 4px black;
+    background-color: white;
+    min-height: 250px;
+    min-width: 200px;
+    max-height: 400px;
+    max-width: 350px;
+    text-decoration: none;
+}
