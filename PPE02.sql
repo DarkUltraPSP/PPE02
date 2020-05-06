@@ -31,7 +31,9 @@ CREATE TABLE Client
 	idClient INT AUTO_INCREMENT,
 	nomClient VARCHAR (64),
 	prenomClient VARCHAR (64),
+	mail VARCHAR (128),
 	adresse VARCHAR (64),
+	password VARCHAR (64),
 	PRIMARY KEY (idClient)
 );
 
