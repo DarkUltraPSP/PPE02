@@ -1,3 +1,7 @@
+<?php
+    $bdd = new PDO("mysql:host=localhost;dbname=PPE02","root","root");
+    
+?>
 <link rel="stylesheet" type="text/css" href="Inscription/Inscription.css" media="all"/>
 <div align="center">
     <h2 class="titre">

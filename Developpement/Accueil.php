@@ -30,7 +30,7 @@ if (!empty ($_GET))
         
         case 'inscription':
             include_once 'Inscription/Inscription.php';
-            $inscrire = new InscriptionController();
+            $inscrire = new insertUser();
             $inscrire->includeView();
             
             break;
