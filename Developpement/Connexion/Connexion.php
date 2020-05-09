@@ -1,15 +1,15 @@
-<link rel="stylesheet" type="text/css" href="css/connexion.css" media="all"/>
-<div class="bloc">
-    <p class="titre">Connexion</p>
-    <div class="interieur">
-        <form method="POST" action="ConnexionController.php">
-            <p class="titre2">Mail :</p>
-            <input class="barre" type ="mail" name="mail" placeholder="Votre adresse mail" required/>
-            <p class="titre2"> Mot de passe :</p>
-            <input class="barre" type ="password" name="password" placeholder="Votre mot de passe" required/>
-            </br>
-            </br>  
-            <input class="barre" type="submit" value="Connexion"/>
-        </form> 
-    </div>
-</div>
+<html>
+    <head>
+        <title>Se connecter</title>
+        <link rel="stylesheet" type="text/css" href="css/connexion.css" media="all"/>
+    </head>
+    <body>
+        <h2>Connexion</h2>
+        </br></br>
+        <form method="POST" action="">  
+            <input type="text" name="mail" placeholder="Mail"/>
+            <input type="password" name="password" placeholder="Mot de passe"/>
+            <input type="submit" name="connexion" value="Se connecter"/>
+        </form>
+    </body>
+</html>
