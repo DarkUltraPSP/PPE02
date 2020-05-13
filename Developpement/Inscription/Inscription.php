@@ -39,7 +39,7 @@
                 <label for ="prenom"> Confirmation du mot de passe :</label>
             </td>
             <td>
-                <input type="password" name="password" placeholder="Confirmer votre mdp" required/>
+                <input type="password" name="confirm" placeholder="Confirmez votre mdp" required/>
             </td>
         </tr>
         <tr>
@@ -67,3 +67,15 @@
     </table>
     </form>
 </div>
+
+<?php
+    $i = 0;
+    $temps = time(); 
+    $prenom=$_POST['prenom'];
+    $nom = $_POST['nom'];
+    $mail = $_POST['mail'];
+    $adresse = $_POST['adresse'];
+    $password = md5($_POST['password']);
+    $confirm = md5($_POST['confirm']);
+    
+?>
