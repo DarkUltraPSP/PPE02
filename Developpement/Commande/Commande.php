@@ -68,23 +68,25 @@ else
 <form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
     <div class="bloc-commande">
         <?php
+        $i=0;
                 for ($index = 1; $index < $_SESSION["size"]+1; $index++) 
                 {
                     ?>
-        <p> Viande n°<?php echo $index ?></p>
-        <div>
+        <div class="containerViande">
+            <p> Viande n°<?php echo $index ?></p>
         <?php
                     foreach ($viandes as $viande)
                     {
         ?>
-            <label for="<?php echo $viande->getIdViande() ?>">
+            <label for="<?php echo $i ?>">
                 <div class="viande">
                     <p><?php echo $viande->getNomViande() ?> </p>
                     <p><?php echo $viande->getDescriptionViande() ?></p>
-                    <input type="checkbox" name="viandes[]" value="<?php echo $viande->getIdViande() ?>" id="<?php echo $viande->getIdViande() ?>"/>
+                    <input type="checkbox" name="viandes[]" value="<?php echo $viande->getIdViande(); ?>" id="<?php echo $i; ?>"/>
                 </div>
              </label>
         <?php
+        $i++;
                     }
                     ?>
         </div>

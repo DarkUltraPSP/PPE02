@@ -13,6 +13,13 @@ if (!empty ($_GET))
             {
                 $_SESSION['size'] = $_POST["size"];
             }
+            if (!empty($_POST[""]))
+            {
+                if (count($_POST["viandes"]) == 3)
+                {
+                    
+                }
+            }
             //session_destroy();
             print_r($_SESSION);
             
