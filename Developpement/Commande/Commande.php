@@ -2,6 +2,7 @@
 
 $tacos = TacosManager::findAllTacos();
 $viandes = ViandeManager::findAllViandes();
+$sauces = SauceManager::findAllSauces();
 $frites = FritesManager::findAllFrites();
 $boissons = BoissonManager::findAllBoissons();
 
@@ -62,7 +63,7 @@ else
 </form>
 <?php
             }
-            else if (!empty($_SESSION["size"]))
+            else if (!empty($_SESSION["size"]) && empty($_SESSION["viande1"]))
             {
 ?>
 <form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
@@ -97,6 +98,52 @@ else
     <input type="submit" value="Valider"/>
 </form>
 <?php   
+            }
+            else if (!empty($_SESSION["size"]) && !empty($_SESSION["viande1"]))
+            {
+                $nbSauce = 0;
+                if ($_SESSION["size"] == 1)
+                {
+                    $nbSauce = 1;
+                }
+                else
+                {
+                    $nbSauce = 2;
+                }
+?>
+<form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
+    <div class="bloc-commande">
+        <?php
+        $i = 0;
+        for ($index1 = 0; $index1 < $nbSauce; $index1++) 
+        {
+        ?>
+        <div class="containerViande">
+            <p> Sauce n°<?php echo $index1 ?></p>
+        <?php
+            foreach ($sauces as $sauce)
+            {
+        ?>
+            <label for="<?php echo $i ?>">
+                <div class="viande">
+                    <p> <?php echo $sauce->getNomSauce() ?> </p>
+                    <p> <?php echo $sauce->getDescriptionSauce() ?> </p>
+                    <input type="hidden" name="nbSaucesMax" value="<?php echo $nbSauce ?>"/>
+                    <input type="checkbox" name="sauces[]" value="<?php echo $sauce->getIdSauce(); ?>" id="<?php echo $i ?>"/>
+                </div>
+             </label>
+        <?php
+        $i++;
+            }
+        ?>
+        </div>
+        <?php
+        }
+        ?>
+    </div>
+    <input type="submit" value="Valider"/>
+</form>
+<?php
             }
             break;
             

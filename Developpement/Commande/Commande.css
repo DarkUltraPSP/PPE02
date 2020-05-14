@@ -53,11 +53,6 @@
     text-decoration: none;
 }
 
-form input[type="checkbox"]:checked + label 
-{
-   background-color: yellow;
-}
-
 .selectSize
 {
     font-size: 35px;
@@ -76,12 +71,14 @@ form input[type="checkbox"]:checked + label
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-around;
+    text-align: center;
     border-radius: 20px;
     border: solid 4px black;
     background-color: white;
-    width: 200px;
+    width: 175px;
     height: 150px;
     margin: 10px;
+    padding: 10px;
     text-decoration: none;
     user-select: none;
 }
