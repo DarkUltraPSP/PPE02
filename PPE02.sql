@@ -23,6 +23,7 @@ CREATE TABLE FritesPanier
 CREATE TABLE Panier
 (
 	idPanier INT AUTO_INCREMENT,
+	prix FLOAT,
 	PRIMARY KEY (idPanier)
 );
 
@@ -104,6 +105,25 @@ CREATE TABLE ViandeTacos
 	PRIMARY KEY (idViande, idTacos)
 );
 
+CREATE TABLE TacosClient
+(
+	idTacosClient INT AUTO_INCREMENT,
+	idSize INT,
+	idViande1 INT,
+	idViande2 INT,
+	idViande3 INT,
+	idSauce1 INT,
+	idSauce2 INT,
+	PRIMARY KEY (idTacosClient)
+);
+
+CREATE TABLE TacosClientPanier
+(
+	idPanier INT,
+	idTacosClient INT,
+	PRIMARY KEY (idPanier, idTacosClient)
+);
+
 ALTER TABLE FritesPanier
 ADD CONSTRAINT FritesPanier_idFrites
 FOREIGN KEY (idFrites)
@@ -163,6 +183,16 @@ ALTER TABLE ViandeTacos
 ADD CONSTRAINT ViandeTacos_idTacos
 FOREIGN KEY (idTacos)
 REFERENCES Tacos (idTacos);
+
+ALTER TABLE TacosClientPanier
+ADD CONSTRAINT TacosClientPanier_idPanier
+FOREIGN KEY (idPanier)
+REFERENCES Panier (idPanier);
+
+ALTER TABLE TacosClientPanier
+ADD CONSTRAINT TacosClientPanier_idTacosClient
+FOREIGN KEY (idTacosClient)
+REFERENCES TacosClient (idTacosClient);
 
 INSERT INTO Tacos (nomTacos, descriptionTacos) VALUES
 ("Tacos M", "1 viande et 1 sauce au choix"),
