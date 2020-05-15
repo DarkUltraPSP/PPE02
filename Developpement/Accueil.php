@@ -20,12 +20,12 @@ if (!empty ($_GET))
             include_once 'Commande/CommandeController.php';
             $commande = new CommandeController();
             $commande->includeView();
-            if (!empty($_POST["size"]))
+            if (!empty($_POST["size"])) //Mettre la taille du Tacos en session
             {
                 $commande->size($_POST["size"]);
                 $commande->refresh();
             }
-            if (!empty($_POST["viandes"]))
+            if (!empty($_POST["viandes"])) //Mettre les viandes en session
             {
                 if (count($_POST["viandes"]) == $_SESSION["size"])
                 {
@@ -42,7 +42,7 @@ if (!empty ($_GET))
 <?php
                 }
             }
-            if (!empty($_POST["sauces"]))
+            if (!empty($_POST["sauces"])) //Mettre les sauces en session
             {
                 if (count($_POST["sauces"]) == $_POST["nbSaucesMax"])
                 {
@@ -58,7 +58,8 @@ if (!empty ($_GET))
 </div>
 <?php
                 }
-                if (!empty($_SESSION["sauce0"]))
+            }
+            if (!empty($_POST["confirmationTacos"]))
                 {
                     $tacos = new TacosClient();
                     switch ($_SESSION["size"])
@@ -77,10 +78,10 @@ if (!empty ($_GET))
                     }
                     $commande->unsetSession();
                 }
-            }
 
             echo "<pre>";
             print_r($_SESSION);
+            print_r($_POST);
             echo "</pre>";
             
             break;
