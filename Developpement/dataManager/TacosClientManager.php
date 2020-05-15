@@ -15,11 +15,12 @@ class TacosClientManager
         foreach ($resultat as $lineResultat)
         {
             $tacos->setIdTacosClient($lineResultat["idTacosClient"]);
-            $tacos->setViande1($lineResultat["viande1"]);
-            $tacos->setViande2($lineResultat["viande2"]);
-            $tacos->setViande3($lineResultat["viande3"]);
-            $tacos->setSauce1($lineResultat["Sauce1"]);
-            $tacos->setSauce2($lineResultat["Sauce2"]);
+            $tacos->setSize($lineResultat["idSize"]);
+            $tacos->setViande1($lineResultat["idViande1"]);
+            $tacos->setViande2($lineResultat["idViande2"]);
+            $tacos->setViande3($lineResultat["idViande3"]);
+            $tacos->setSauce1($lineResultat["idSauce1"]);
+            $tacos->setSauce2($lineResultat["idSauce2"]);
         }
         
         return $tacos;

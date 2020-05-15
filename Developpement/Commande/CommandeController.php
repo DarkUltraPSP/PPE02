@@ -29,20 +29,57 @@ class CommandeController
     
     public function setSauce($tabSauce) 
     {
-        for ($index; $index < count($tabSauce); $index++) 
+        for ($index = 0; $index < count($tabSauce); $index++) 
         {
-            $_SESSION["Sauce$index"] = $tabSauce[$index];
+            $_SESSION["sauce$index"] = $tabSauce[$index];
         }
+    }
+    
+    public function setTacosMSession($size, $viande1, $sauce1)
+    {
+        $tacos = new TacosClient();
+        
+        $tacos->setSize($size);
+        $tacos->setViande1($viande1);
+        $tacos->setSauce1($sauce1);
+        
+        $_SESSION["tacos"][] = $tacos;
+    }
+    
+    public function setTacosLSession($size, $viande1, $viande2, $sauce1, $sauce2)
+    {
+        $tacos = new TacosClient();
+        
+        $tacos->setSize($size);
+        $tacos->setViande1($viande1);
+        $tacos->setViande2($viande2);
+        $tacos->setSauce1($sauce1);
+        $tacos->setSauce2($sauce2);
+        
+        $_SESSION["tacos"][] = $tacos;
+    }
+    
+    public function setTacosXLSession($size, $viande1, $viande2, $viande3, $sauce1, $sauce2)
+    {
+        $tacos = new TacosClient();
+        
+        $tacos->setSize($size);
+        $tacos->setViande1($viande1);
+        $tacos->setViande2($viande2);
+        $tacos->setViande3($viande3);
+        $tacos->setSauce1($sauce1);
+        $tacos->setSauce2($sauce2);
+
+        $_SESSION["tacos"][] = $tacos;
     }
     
     public function unsetSession() 
     {
         unset($_SESSION['size']);
+        unset($_SESSION['viande0']);
         unset($_SESSION['viande1']);
         unset($_SESSION['viande2']);
-        unset($_SESSION['viande3']);
+        unset($_SESSION['sauce0']);
         unset($_SESSION['sauce1']);
-        unset($_SESSION['sauce2']);
-
     }
 }

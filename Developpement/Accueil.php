@@ -7,6 +7,7 @@ if (!empty ($_GET["destroy"]))
     {
         session_destroy();
         header ("Location: Accueil.php");
+        exit;
     }
 }
 
@@ -56,6 +57,25 @@ if (!empty ($_GET))
     <p> Vous n'avez pas saisi le bon nombre de sauces </p>
 </div>
 <?php
+                }
+                if (!empty($_SESSION["sauce0"]))
+                {
+                    $tacos = new TacosClient();
+                    switch ($_SESSION["size"])
+                    {
+                        case 1:
+                            $commande->setTacosMSession($_SESSION["size"], $_SESSION["viande0"], $_SESSION["sauce0"]);
+                            break;
+                        case 2:
+                            $commande->setTacosLSession($_SESSION["size"], $_SESSION["viande0"], $_SESSION["viande1"], $_SESSION["sauce0"], $_SESSION["sauce1"]);
+                            break;
+                        case 3:
+                            $commande->setTacosXLSession($_SESSION["size"], $_SESSION["viande0"], $_SESSION["viande1"], $_SESSION["viande2"], $_SESSION["sauce0"], $_SESSION["sauce1"]);
+                            break;
+                        default:
+                            break;
+                    }
+                    $commande->unsetSession();
                 }
             }
 

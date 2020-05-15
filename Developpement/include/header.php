@@ -13,6 +13,7 @@ include_once 'data/Sauce.php';
 include_once 'data/SauceTacos.php';
 include_once 'data/Viande.php';
 include_once 'data/ViandeTacos.php';
+include_once 'data/TacosClient.php';
 
 include_once 'dataManager/BoissonManager.php';
 include_once 'dataManager/BoissonPanierManager.php';
@@ -27,6 +28,7 @@ include_once 'dataManager/SauceManager.php';
 include_once 'dataManager/SauceTacosManager.php';
 include_once 'dataManager/ViandeManager.php';
 include_once 'dataManager/ViandeTacosManager.php';
+include_once 'dataManager/TacosClientManager.php';
 include_once 'dataManager/databaseLinker.php';
 
 if (!isset($_SESSION))
@@ -81,6 +83,8 @@ if (!isset($_SESSION))
                     <input type="hidden" name="page" value="inscription" id="btn"/>
                     <input type="submit"  value="Inscrivez-vous" class="btn"/>
                 </form>
+                
+                <i class="fas fa-shopping-cart"></i>
                 
             </div>
         </div>

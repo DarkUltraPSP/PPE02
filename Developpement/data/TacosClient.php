@@ -3,6 +3,7 @@
 class TacosClient 
 {
     private $idTacosClient;
+    private $size;
     private $viande1;
     private $viande2;
     private $viande3;
@@ -11,6 +12,10 @@ class TacosClient
     
     function getIdTacosClient() {
         return $this->idTacosClient;
+    }
+
+    function getSize() {
+        return $this->size;
     }
 
     function getViande1() {
@@ -37,6 +42,10 @@ class TacosClient
         $this->idTacosClient = $idTacosClient;
     }
 
+    function setSize($size) {
+        $this->size = $size;
+    }
+
     function setViande1($viande1) {
         $this->viande1 = $viande1;
     }
@@ -56,5 +65,7 @@ class TacosClient
     function setSauce2($sauce2) {
         $this->sauce2 = $sauce2;
     }
+
+
 
 }
