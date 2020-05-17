@@ -74,18 +74,9 @@ if (!isset($_SESSION))
                 
             </div>
             <div class="lateral">
-
-                <form class="optn" method="GET" action="Accueil.php">
-                    <input type="hidden" name="page" value="connexion" id="btn"/>
-                    <input type="submit" value="Connectez-vous" class="btn"/>
-                </form>
-                <form class="optn" method="GET" action="Accueil.php">
-                    <input type="hidden" name="page" value="inscription" id="btn"/>
-                    <input type="submit"  value="Inscrivez-vous" class="btn"/>
-                </form>
-                
-                <i class="fas fa-shopping-cart"></i>
-                
+                <div class="cart">
+                    <a href="Accueil.php?page=panier"> Votre panier <i class="fas fa-shopping-cart"></i> </a>
+                </div>
             </div>
         </div>
     </header>

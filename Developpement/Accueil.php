@@ -81,7 +81,7 @@ if (!empty ($_GET))
             }
             if (!empty($_POST["confirmationTacos"])) //Mettre le tacos en tableau d'objet
             {
-                $tacos = new TacosClient();
+                $tacosClient = new TacosClient();
                 switch ($_SESSION["size"])
                 {
                     case 1:
@@ -160,11 +160,21 @@ if (!empty ($_GET))
             
             echo "<pre>";
             print_r($_SESSION);
-            print_r($_POST);
             echo "</pre>";
             
             break;
-
+            
+        case "panier":
+            include_once 'Pages/Panier/PanierController.php';
+            $panier = new PanierController;
+            $panier->includeView();
+            
+            echo "<pre>";
+            print_r($_SESSION);
+            echo "</pre>";
+            break;
+            
+            
         case 'connexion':
             include_once 'Connexion/Connexion.php';
             include_once 'Connexion/ConnexionController.php';
