@@ -43,4 +43,12 @@
         
     </div>
     
+    <div>
+        <p> Nous contacter par téléphone : 04 98 65 45 89 </p>
+    </div>
+    
+    <div>
+        <p> A partir du 22 mai nous commencerons a prendre les commandes en ligne.</p>
+    </div>
+    
 </div>

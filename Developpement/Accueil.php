@@ -17,20 +17,20 @@ if (!empty ($_GET))
     switch ($_GET['page'])
     {
         case 'commander':
-            include_once 'Commande/CommandeController.php';
+            include_once 'Pages/Commande/CommandeController.php';
             $commande = new CommandeController();
             $commande->includeView();
             if (!empty($_POST["size"])) //Mettre la taille du Tacos en session
             {
                 $commande->size($_POST["size"]);
-                $commande->refresh();
+                $commande->refreshTacos();
             }
             if (!empty($_POST["viandes"])) //Mettre les viandes en session
             {
                 if (count($_POST["viandes"]) == $_SESSION["size"])
                 {
                     $commande->setViandes($_POST["viandes"]);
-                    $commande->refresh();
+                    $commande->refreshTacos();
                 }
                 else
                 {
@@ -42,12 +42,17 @@ if (!empty ($_GET))
 <?php
                 }
             }
+            if (!empty($_POST["retourSize"])) //Unset size pour revenir a la page des tailles
+            {
+                unset($_SESSION["size"]);
+                $commande->refreshTacos();
+            }
             if (!empty($_POST["sauces"])) //Mettre les sauces en session
             {
                 if (count($_POST["sauces"]) == $_POST["nbSaucesMax"])
                 {
                     $commande->setSauce($_POST["sauces"]);
-                    $commande->refresh();
+                    $commande->refreshTacos();
                 }
                 else
                 {
@@ -59,26 +64,100 @@ if (!empty ($_GET))
 <?php
                 }
             }
-            if (!empty($_POST["confirmationTacos"]))
+            if (!empty($_POST["retourViande"])) //Unset viande0,1,2 pour revenir a la page des viandes
+            {
+                unset($_SESSION["viande0"]);
+                
+                if (!empty($_SESSION["viande1"]))
                 {
-                    $tacos = new TacosClient();
-                    switch ($_SESSION["size"])
+                    unset($_SESSION["viande1"]);
+                    
+                    if (!empty($_SESSION["viande2"]))
                     {
-                        case 1:
-                            $commande->setTacosMSession($_SESSION["size"], $_SESSION["viande0"], $_SESSION["sauce0"]);
-                            break;
-                        case 2:
-                            $commande->setTacosLSession($_SESSION["size"], $_SESSION["viande0"], $_SESSION["viande1"], $_SESSION["sauce0"], $_SESSION["sauce1"]);
-                            break;
-                        case 3:
-                            $commande->setTacosXLSession($_SESSION["size"], $_SESSION["viande0"], $_SESSION["viande1"], $_SESSION["viande2"], $_SESSION["sauce0"], $_SESSION["sauce1"]);
-                            break;
-                        default:
-                            break;
+                        unset($_SESSION["viande2"]);
                     }
-                    $commande->unsetSession();
                 }
+                $commande->refreshTacos();
+            }
+            if (!empty($_POST["confirmationTacos"])) //Mettre le tacos en tableau d'objet
+            {
+                $tacos = new TacosClient();
+                switch ($_SESSION["size"])
+                {
+                    case 1:
+                        $commande->setTacosMObjet($_SESSION["size"], $_SESSION["viande0"], $_SESSION["sauce0"]);
+                        break;
+                    case 2:
+                        $commande->setTacosLObjet($_SESSION["size"], $_SESSION["viande0"], $_SESSION["viande1"], $_SESSION["sauce0"], $_SESSION["sauce1"]);
+                        break;
+                    case 3:
+                        $commande->setTacosXLObjet($_SESSION["size"], $_SESSION["viande0"], $_SESSION["viande1"], $_SESSION["viande2"], $_SESSION["sauce0"], $_SESSION["sauce1"]);
+                        break;
+                    default:
+                        break;
+                }
+                $commande->unsetSessionTacos();
+            }
+            if (!empty($_POST["retourSauce"]))
+            {
+                echo "test";
+                unset($_SESSION["sauce0"]);
+                if (!empty($_SESSION["sauce1"]))
+                {
+                    unset($_SESSION["sauce1"]);
+                }
+                $commande->refreshTacos();
+            }
+            if (!empty($_POST["delTacos"])) //Unset tout le tacos pour revenir a la page produit
+            {
+                $commande->unsetSessionTacos();
+            }
+            
 
+            if (!empty($_POST["idFrites"])) //Met le type de frites choisis en session
+            {
+                $commande->setFrites($_POST["idFrites"]);
+                $commande->refreshFrites();
+            }
+            if (!empty($_POST["quantiteFrites"])) //Met la quantite de frites en session
+            {
+                $commande->setQuantiteFrites($_POST["quantiteFrites"]);
+                $commande->refreshFrites();
+            }
+            if (!empty($_POST["confirmationFrites"])) //Met les frites en tableau d'objet
+            {
+                $commande->setFritesObjet($_SESSION["idFrites"], $_SESSION["quantiteFrites"]);
+                $commande->unsetSessionFrites();
+            }
+            else if (!empty($_POST["delFrites"]))  //Unset tout les frites pour revenir a la page produit
+            {
+                $commande->unsetSessionFrites();
+            }
+            
+            
+            if (!empty($_POST["idBoisson"])) //Ajout de la boisson en session
+            {
+                $commande->setBoisson($_POST["idBoisson"]);
+                $commande->refreshBoisson();
+            }
+            
+            if (!empty($_POST["quantiteBoisson"])) //Ajout de la quantite en session
+            {
+                $commande->setQuantiteBoisson($_POST["quantiteBoisson"]);
+                $commande->refreshBoisson();
+
+            }
+            
+            if (!empty($_POST["confirmationBoisson"])) //Met la boisson en session
+            {
+                $commande->setBoissonObjet($_SESSION["idBoisson"], $_SESSION["quantiteBoisson"]);
+                $commande->unsetSessionBoisson();
+            }
+            else if(!empty ($_POST["delBoisson"])) //Unset tout les boissons pour revenir a la page produit
+            {
+                $commande->unsetSessionBoisson();
+            }
+            
             echo "<pre>";
             print_r($_SESSION);
             print_r($_POST);
@@ -102,7 +181,7 @@ if (!empty ($_GET))
             break;
         
         case "contact":
-            include_once 'Contact/ContactController.php';
+            include_once 'Pages/Contact/ContactController.php';
             $contact = new ContactController();
             $contact->includeView();
             

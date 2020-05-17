@@ -16,6 +16,7 @@ class FritesPanierManager
         {
             $fritesPanier->setIdPanier($lineResultat["idPanier"]);
             $fritesPanier->setIdFrites($lineResultat["idFrites"]);
+            $fritesPanier->setQuantite($lineResultat["quantite"]);
         }
         
         return $fritesPanier;

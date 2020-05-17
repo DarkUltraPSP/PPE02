@@ -16,6 +16,7 @@ class BoissonPanierManager
         {
             $boissonPanier->setIdBoisson($lineResultat["idBoisson"]);
             $boissonPanier->setIdPanier($lineResultat["idPanier"]);
+            $boissonPanier->setIdPanier($resultat["quantite"]);
         }
         
         return $boissonPanier;

@@ -17,6 +17,7 @@ CREATE TABLE FritesPanier
 (
 	idFrites INT,
 	idPanier INT,
+	quantite INT,
 	PRIMARY KEY (idFrites, idPanier)
 );
 
@@ -57,6 +58,7 @@ CREATE TABLE BoissonPanier
 (
 	idBoisson INT,
 	idPanier INT,
+	quantite INT,
 	PRIMARY KEY (idBoisson, idPanier)
 );
 

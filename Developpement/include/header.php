@@ -53,7 +53,7 @@ if (!isset($_SESSION))
             {
                 case 'commander':
             ?>
-        <link rel="stylesheet" type="text/css" href="Commande/Commande.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="Pages/Commande/Commande.css" media="all"/>
             <?php
             }
         }
