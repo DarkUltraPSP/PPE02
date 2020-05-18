@@ -5,6 +5,7 @@ class Tacos
     private $idTacos;
     private $nomTacos;
     private $descriptionTacos;
+    private $prixTacos;
     
     function getIdTacos() {
         return $this->idTacos;
@@ -18,6 +19,10 @@ class Tacos
         return $this->descriptionTacos;
     }
 
+    function getPrixTacos() {
+        return $this->prixTacos;
+    }
+
     function setIdTacos($idTacos) {
         $this->idTacos = $idTacos;
     }
@@ -28,6 +33,10 @@ class Tacos
 
     function setDescriptionTacos($descriptionTacos) {
         $this->descriptionTacos = $descriptionTacos;
+    }
+
+    function setPrixTacos($prixTacos) {
+        $this->prixTacos = $prixTacos;
     }
 
 }

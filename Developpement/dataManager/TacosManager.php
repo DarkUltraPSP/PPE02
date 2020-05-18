@@ -17,6 +17,7 @@ class TacosManager
             $tacos->setIdTacos($lineResultat["idTacos"]);
             $tacos->setNomTacos($lineResultat["nomTacos"]);
             $tacos->setDescriptionTacos($lineResultat["descriptionTacos"]);
+            $tacos->setPrixTacos($lineResultat["prixTacos"]);
         }
         
         return $tacos;

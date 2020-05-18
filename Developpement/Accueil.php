@@ -168,12 +168,30 @@ if (!empty ($_GET))
             include_once 'Pages/Panier/PanierController.php';
             $panier = new PanierController;
             $panier->includeView();
+            if (!empty ($_POST["delTacosPanier"]))
+            {
+                $panier->removeTacos($_POST["arrayPosTacos"]);
+                $panier->refreshPanier();
+            }
+            if (!empty($_POST["delFritesPanier"]))
+            {
+                $panier->removeFrites($_POST["arrayPosFrites"]);
+                $panier->refreshPanier();
+            }
+            
+            if (!empty($_POST["delBoissonPanier"]))
+            {
+                $panier->removeBoisson($_POST["arrayPosBoisson"]);
+                $panier->refreshPanier();
+            }
             
             echo "<pre>";
             print_r($_SESSION);
             echo "</pre>";
             break;
             
+        case "InfoClient":
+            break;
             
         case 'connexion':
             include_once 'Connexion/Connexion.php';

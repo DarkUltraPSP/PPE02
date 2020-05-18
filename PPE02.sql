@@ -67,6 +67,7 @@ CREATE TABLE Tacos
 	idTacos INT AUTO_INCREMENT,
 	nomTacos VARCHAR (64),
 	descriptionTacos LONGTEXT,
+	prixTacos FLOAT,
 	PRIMARY KEY (idTacos)
 );
 
@@ -196,10 +197,10 @@ ADD CONSTRAINT TacosClientPanier_idTacosClient
 FOREIGN KEY (idTacosClient)
 REFERENCES TacosClient (idTacosClient);
 
-INSERT INTO Tacos (nomTacos, descriptionTacos) VALUES
-("Tacos M", "1 viande et 1 sauce au choix"),
-("Tacos L", "2 viandes et 2 sauces au choix"),
-("Tacos XL", "3 viandes et 2 sauces au choix");
+INSERT INTO Tacos (nomTacos, descriptionTacos, prixTacos) VALUES
+("Tacos M", "1 viande et 1 sauce au choix", 5),
+("Tacos L", "2 viandes et 2 sauces au choix", 7),
+("Tacos XL", "3 viandes et 2 sauces au choix", 9);
 
 INSERT INTO Viande (nomViande, descriptionViande) VALUES
 ("Escalope de poulet", "De tendres escalopes de poulet"),
