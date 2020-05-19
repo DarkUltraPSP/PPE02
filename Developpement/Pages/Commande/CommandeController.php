@@ -38,38 +38,38 @@ class CommandeController
     
     public function setTacosMObjet($size, $viande1, $sauce1)
     {
-        $tacos = new TacosClient();
+        $tacos = new Tacos();
         
-        $tacos->setSize($size);
-        $tacos->setViande1($viande1);
-        $tacos->setSauce1($sauce1);
+        $tacos->setIdTaille($size);
+        $tacos->setIdViande1($viande1);
+        $tacos->setIdSauce1($sauce1);
         
         $_SESSION["tacos"][] = $tacos;
     }
     
     public function setTacosLObjet($size, $viande1, $viande2, $sauce1, $sauce2)
     {
-        $tacos = new TacosClient();
+        $tacos = new Tacos();
         
-        $tacos->setSize($size);
-        $tacos->setViande1($viande1);
-        $tacos->setViande2($viande2);
-        $tacos->setSauce1($sauce1);
-        $tacos->setSauce2($sauce2);
+        $tacos->setIdTaille($size);
+        $tacos->setIdViande1($viande1);
+        $tacos->setIdViande2($viande2);
+        $tacos->setIdSauce1($sauce1);
+        $tacos->setIdSauce2($sauce2);
         
         $_SESSION["tacos"][] = $tacos;
     }
     
     public function setTacosXLObjet($size, $viande1, $viande2, $viande3, $sauce1, $sauce2)
     {
-        $tacos = new TacosClient();
+        $tacos = new Tacos();
         
-        $tacos->setSize($size);
-        $tacos->setViande1($viande1);
-        $tacos->setViande2($viande2);
-        $tacos->setViande3($viande3);
-        $tacos->setSauce1($sauce1);
-        $tacos->setSauce2($sauce2);
+        $tacos->setIdTaille($size);
+        $tacos->setIdViande1($viande1);
+        $tacos->setIdViande2($viande2);
+        $tacos->setIdViande3($viande3);
+        $tacos->setIdSauce1($sauce1);
+        $tacos->setIdSauce2($sauce2);
 
         $_SESSION["tacos"][] = $tacos;
     }

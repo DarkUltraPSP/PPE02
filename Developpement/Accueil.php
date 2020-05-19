@@ -81,7 +81,7 @@ if (!empty ($_GET['page']))
             }
             if (!empty($_POST["confirmationTacos"])) //Mettre le tacos en tableau d'objet
             {
-                $tacosClient = new TacosClient();
+                $tacos = new Tacos();
                 switch ($_SESSION["size"])
                 {
                     case 1:
@@ -160,6 +160,7 @@ if (!empty ($_GET['page']))
             
             echo "<pre>";
             print_r($_SESSION);
+            print_r($_POST);
             echo "</pre>";
             
             break;
@@ -187,6 +188,7 @@ if (!empty ($_GET['page']))
             
             echo "<pre>";
             print_r($_SESSION);
+            print_r($_POST);
             echo "</pre>";
             break;
             

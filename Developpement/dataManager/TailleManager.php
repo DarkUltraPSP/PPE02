@@ -1,44 +1,44 @@
 <?php
 
-class TacosManager
+class TailleManager 
 {
-    public static function findTacos($idTacos)
+    public static function findTaille($idTaille)
     {
-        $tacos = new Tacos();
-        $login = databaseLinker::getConnexion();
+        $taille = new Taille();
+        $login = DatabaseLinker::getConnexion();
         
         $state = $login->prepare("SELECT * FROM Taille WHERE idTaille = ?");
-        $state->bindParam(1, $idTacos);
+        $state->bindParam(1, $idTaille);
         $state->execute();
         $resultat = $state->fetchAll();
         
         foreach ($resultat as $lineResultat)
         {
-            $tacos->setIdTacos($lineResultat["idTaille"]);
-            $tacos->setNomTacos($lineResultat["nomTaille"]);
-            $tacos->setDescriptionTacos($lineResultat["descriptionTaille"]);
-            $tacos->setPrixTacos($lineResultat["prixTaille"]);
+            $taille->setIdTaille($lineResultat["idTaille"]);
+            $taille->setNomTaille($lineResultat["nomTaille"]);
+            $taille->setDescriptionTaille($lineResultat["descriptionTaille"]);
+            $taille->setPrixTaille($lineResultat["prixTaille"]);
         }
         
-        return $tacos;
+        return $taille;
     }
     
-    public static function findAllTacos()
+    public static function findAllTailles()
     {
-        $tacos = new Tacos();
-        $tabTacos = [];
+        $taille = new Taille();
         $login = dataBaseLinker::getConnexion();
         
         $state = $login->prepare("SELECT * FROM Taille");
+        $tabTaille = [];
         $state->execute();
         $resultats=$state->fetchAll();
         
         foreach($resultats as $lineResultat)
         {
-            $tacos = TacosManager::findTacos($lineResultat["idTaille"]);
-            $tabTacos[] = $tacos;
+            $taille = TailleManager::findTaille($lineResultat["idTaille"]);
+            $tabTaille[] = $taille;
         }
         
-        return $tabTacos;
+        return $tabTaille;
     }
 }

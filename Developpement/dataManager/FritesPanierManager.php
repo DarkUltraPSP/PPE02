@@ -34,7 +34,7 @@ class FritesPanierManager
         
         foreach($resultats as $lineResultat)
         {
-            $fritesPanier = FritesPanierManager::findFritesPanier($lineResultat["idFrites"]);
+            $fritesPanier = FritesPanierManager::findFritesPanier($lineResultat["idPanier"]);
             $tabFritesPanier[] = $fritesPanier;
         }
         

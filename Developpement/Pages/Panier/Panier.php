@@ -1,11 +1,11 @@
 <?php
 $panier = PanierManager::findAllPaniers();
-$tacosClient = TacosClientManager::findAllTacosClient();
+$tacos = TacosManager::findAllTacos();
 $fritesClient = FritesPanierManager::findAllFritesPanier();
 $boissonClient = BoissonPanierManager::findAllBoissonsPanier();
 $prixTotal = 0.0;
 
-$tacos = TacosManager::findAllTacos();
+$tailles = TailleManager::findAllTailles();
 $viandes = ViandeManager::findAllViandes();
 $sauces = SauceManager::findAllSauces();
 $frites = FritesManager::findAllFrites();
@@ -32,48 +32,53 @@ if (!empty($_SESSION["boissons"]))
         <td> Quantite </td>
         <td> Prix </td>
     </tr>
+    <tr class="titreTab">
+        <td> Tacos </td>
+    </tr>
     <?php
     $tacosCpt = 0;
+if (!empty($tacosClient))
+{
     foreach ($tacosClient as $tClient)
     {
     ?>
     <tr class="tacos">
         <td>
     <?php
-        foreach ($tacos as $size) //Afficher la taille du tacos
+        foreach ($tailles as $size) //Afficher la taille du tacos
         {
-            if ($size->getIdTacos() == $tClient->getSize())
+            if ($size->getIdTaille() == $tClient->getIdTaille())
             {
-                echo $size->getNomTacos();
+                echo $size->getNomTaille();
                 echo '<br>';
             }
         }
         foreach ($viandes as $viande) //Afficher les viandes du tacos
         {
-            if ($viande->getIdViande() == $tClient->getViande1() || $viande->getIdViande() == $tClient->getViande2() || $viande->getIdViande() == $tClient->getViande3())
+            if ($viande->getIdViande() == $tClient->getIdViande1() || $viande->getIdViande() == $tClient->getIdViande2() || $viande->getIdViande() == $tClient->getIdViande3())
             {
                 echo $viande->getNomViande().", ";
             }
         }
         foreach ($sauces as $sauce)
         {
-            if ($sauce->getIdSauce() == $tClient->getSauce1() || $sauce->getIdSauce() == $tClient->getSauce2())
+            if ($sauce->getIdSauce() == $tClient->getIdSauce1() || $sauce->getIdSauce() == $tClient->getIdSauce2())
             {
                 echo $sauce->getNomSauce().", ";
             }
         }
         ?>
         </td>
-        <td>
+        <td> <?php //Quantite tacos ?>
             1
         </td>
-        <td>
+        <td> <?php //Prix du Tacos ?>
             <?php
-            foreach ($tacos as $size)
+            foreach ($tailles as $size)
             {
-                if ($size->getIdTacos() == $tClient->getSize())
+                if ($size->getIdTaille() == $tClient->getIdTaille())
                 {
-                    $prixSize = $size->getPrixTacos();
+                    $prixSize = $size->getPrixTaille();
                     $prixTotal += $prixSize;
                     echo $prixSize." €";
                 }
@@ -91,11 +96,14 @@ if (!empty($_SESSION["boissons"]))
     <?php
     $tacosCpt++;
     }
+}
     ?>
     <tr>
         <td> Frites </td>
     </tr>
     <?php
+if (!empty($fritesClient))
+{
     foreach ($fritesClient as $fClient)
     {
         foreach ($frites as $frite)
@@ -121,12 +129,15 @@ if (!empty($_SESSION["boissons"]))
             }
         }
     }
+}
     ?>
     <tr>
         <td> Boissons </td>
     </tr>
     <tbody>
     <?php
+if (!empty($boissonClient))
+{
     foreach ($boissonClient as $bClient)
     {
         foreach ($boissons as $boisson)
@@ -152,6 +163,7 @@ if (!empty($_SESSION["boissons"]))
             }
         }
     }
+}
     ?>
     <tr>
         <td>Prix Total</td>

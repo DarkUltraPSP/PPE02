@@ -1,6 +1,6 @@
 <?php
 
-class TacosPanier 
+class TacosPanier
 {
     private $idTacos;
     private $idPanier;

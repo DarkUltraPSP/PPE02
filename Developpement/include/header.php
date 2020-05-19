@@ -10,10 +10,8 @@ include_once 'data/Panier.php';
 include_once 'data/Tacos.php';
 include_once 'data/TacosPanier.php';
 include_once 'data/Sauce.php';
-include_once 'data/SauceTacos.php';
 include_once 'data/Viande.php';
-include_once 'data/ViandeTacos.php';
-include_once 'data/TacosClient.php';
+include_once 'data/Taille.php';
 
 include_once 'dataManager/BoissonManager.php';
 include_once 'dataManager/BoissonPanierManager.php';
@@ -25,10 +23,9 @@ include_once 'dataManager/PanierManager.php';
 include_once 'dataManager/TacosManager.php';
 include_once 'dataManager/TacosPanierManager.php';
 include_once 'dataManager/SauceManager.php';
-include_once 'dataManager/SauceTacosManager.php';
 include_once 'dataManager/ViandeManager.php';
-include_once 'dataManager/ViandeTacosManager.php';
-include_once 'dataManager/TacosClientManager.php';
+include_once 'dataManager/TailleManager.php';
+
 include_once 'dataManager/databaseLinker.php';
 
 if (!isset($_SESSION))

@@ -1,8 +1,11 @@
 <?php
 
-$tacosClient = TacosManager::findAllTacos();
+$tacos = TacosManager::findAllTacos();
+
+$tailles = TailleManager::findAllTailles();
 $viandes = ViandeManager::findAllViandes();
 $sauces = SauceManager::findAllSauces();
+
 $frites = FritesManager::findAllFrites();
 $boissons = BoissonManager::findAllBoissons();
 
@@ -47,14 +50,14 @@ else
     <form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
         <div class="bloc-commande">
         <?php
-                    foreach ($tacosClient as $frite)
+                    foreach ($tailles as $taille)
                     {
             ?>
-            <label for="<?php echo $frite->getIdTacos(); ?>">
+            <label for="<?php echo $taille->getIdTaille(); ?>">
                 <div class="tacosSize">
-                    <h class="SizeTacos"><?php echo $frite->getNomTacos(); ?></h>
-                    <h> <?php echo $frite->getDescriptionTacos(); ?></h>
-                    <input type="radio" name="size" value="<?php echo $frite->getIdTacos(); ?>" id="<?php echo $frite->getIdTacos(); ?>" />
+                    <h class="SizeTacos"><?php echo $taille->getNomTaille(); ?></h>
+                    <h> <?php echo $taille->getDescriptionTaille(); ?></h>
+                    <input type="radio" name="size" value="<?php echo $taille->getIdTaille(); ?>" id="<?php echo $taille->getIdTaille(); ?>" />
                 </div>
             </label>
             <?php
@@ -203,12 +206,12 @@ else
                 ?>
 <p> Récapitulatif : </p>
 <?php
-                foreach ($tacosClient as $frite) //Recap taille tacos choisie
+                foreach ($tailles as $taille) //Recap taille tacos choisie
                 {
-                    if ($frite->getIdTacos() == $_SESSION["size"])
+                    if ($taille->getIdTaille() == $_SESSION["size"])
                     {
 ?>
-<p> <?php echo $frite->getNomTacos();?>
+<p> <?php echo $taille->getNomTaille();?>
 
 <?php
                     }

@@ -34,7 +34,7 @@ class BoissonPanierManager
         
         foreach($resultats as $lineResultat)
         {
-            $boissonPanier = BoissonPanierManager::findBoissonPanier($lineResultat["idBoisson"]);
+            $boissonPanier = BoissonPanierManager::findBoissonPanier($lineResultat["idPanier"]);
             $tabBoissonPanier[] = $boissonPanier;
         }
         
