@@ -171,4 +171,26 @@ if (!empty($boissonClient))
         <td> <?php echo $prixTotal." €" ?></td>
     </tr>
 </table>
-<a href="Accueil.php?page=InfoClient"><button>Valider ma commande</button></a>
+<?php
+if (isset($_SESSION["tacos"]))
+{
+?>
+<form method="POST" action="Accueil.php?page=panier">
+    <input type="hidden" name="nbTacosCommande" value="<?php echo count($_SESSION["tacos"]); ?>"/>
+    <input type="submit" name="validCommande" value="Valider ma commande"/>
+</form>
+<?php
+}
+else if (isset ($_SESSION["frites"]) || isset ($_SESSION["boisson"]))
+{
+?>
+<div class="erreurPanier"> Vous ne devez commander au moins 1 tacos pour commander des frites et/ou une boisson</div>
+<?php
+}
+else if (!isset($_SESSION["tacos"]))
+{
+?>
+<div class="emptyCart">Votre panier est vide</div>
+<?php
+}
+?>
