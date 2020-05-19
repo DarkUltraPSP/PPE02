@@ -7,10 +7,10 @@ USE PPE02;
 
 CREATE TABLE Frites
 (
-	idFrites INT AUTO_INCREMENT,
-	nomFrites VARCHAR (64),
-	prixFrites FLOAT,
-	PRIMARY KEY (idFrites)
+    idFrites INT AUTO_INCREMENT,
+    nomFrites VARCHAR (64),
+    prixFrites FLOAT,
+    PRIMARY KEY (idFrites)
 );
 
 CREATE TABLE FritesPanier
@@ -30,28 +30,28 @@ CREATE TABLE Panier
 
 CREATE TABLE Client
 (
-	idClient INT AUTO_INCREMENT,
-	nomClient VARCHAR (64),
-	prenomClient VARCHAR (64),
-	mail VARCHAR (128),
-	adresse VARCHAR (64),
-	password VARCHAR (64),
-	PRIMARY KEY (idClient)
+    idClient INT AUTO_INCREMENT,
+    nomClient VARCHAR (64),
+    prenomClient VARCHAR (64),
+    mail VARCHAR (128),
+    adresse VARCHAR (64),
+    password VARCHAR (64),
+    PRIMARY KEY (idClient)
 );
 
 CREATE TABLE ClientPanier
 (
-	idClient INT,
-	idPanier INT,
-	PRIMARY KEY (idClient, idPanier)
+    idClient INT,
+    idPanier INT,
+    PRIMARY KEY (idClient, idPanier)
 );
 
 CREATE TABLE Boisson
 (
-	idBoisson INT AUTO_INCREMENT,
-	nomBoisson VARCHAR (64),
-	prixBoisson VARCHAR (64),
-	PRIMARY KEY (idBoisson)
+    idBoisson INT AUTO_INCREMENT,
+    nomBoisson VARCHAR (64),
+    prixBoisson VARCHAR (64),
+    PRIMARY KEY (idBoisson)
 );
 
 CREATE TABLE BoissonPanier
@@ -73,18 +73,18 @@ CREATE TABLE Taille
 
 CREATE TABLE Sauce
 (
-	idSauce INT AUTO_INCREMENT,
-	nomSauce VARCHAR (64),
-	descriptionSauce LONGTEXT,
-	PRIMARY KEY (idSauce)
+    idSauce INT AUTO_INCREMENT,
+    nomSauce VARCHAR (64),
+    descriptionSauce LONGTEXT,
+    PRIMARY KEY (idSauce)
 );
 
 CREATE TABLE Viande
 (
-	idViande INT AUTO_INCREMENT,
-	nomViande VARCHAR (64),
-	descriptionViande LONGTEXT,
-	PRIMARY KEY (idViande)
+    idViande INT AUTO_INCREMENT,
+    nomViande VARCHAR (64),
+    descriptionViande LONGTEXT,
+    PRIMARY KEY (idViande)
 );
 
 CREATE TABLE Tacos
