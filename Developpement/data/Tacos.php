@@ -2,41 +2,41 @@
 
 class Tacos 
 {
-    private $idTacos;
-    private $nomTacos;
-    private $descriptionTacos;
-    private $prixTacos;
+    private $idTaille;
+    private $nomTaille;
+    private $descriptionTaille;
+    private $prixTaille;
     
-    function getIdTacos() {
-        return $this->idTacos;
+    function getIdTaille() {
+        return $this->idTaille;
     }
 
-    function getNomTacos() {
-        return $this->nomTacos;
+    function getNomTaille() {
+        return $this->nomTaille;
     }
 
-    function getDescriptionTacos() {
-        return $this->descriptionTacos;
+    function getDescriptionTaille() {
+        return $this->descriptionTaille;
     }
 
-    function getPrixTacos() {
-        return $this->prixTacos;
+    function getPrixTaille() {
+        return $this->prixTaille;
     }
 
-    function setIdTacos($idTacos) {
-        $this->idTacos = $idTacos;
+    function setIdTaille($idTaille) {
+        $this->idTaille = $idTaille;
     }
 
-    function setNomTacos($nomTacos) {
-        $this->nomTacos = $nomTacos;
+    function setNomTaille($nomTaille) {
+        $this->nomTaille = $nomTaille;
     }
 
-    function setDescriptionTacos($descriptionTacos) {
-        $this->descriptionTacos = $descriptionTacos;
+    function setDescriptionTaille($descriptionTaille) {
+        $this->descriptionTaille = $descriptionTaille;
     }
 
-    function setPrixTacos($prixTacos) {
-        $this->prixTacos = $prixTacos;
+    function setPrixTaille($prixTaille) {
+        $this->prixTaille = $prixTaille;
     }
 
 }

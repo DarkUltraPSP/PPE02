@@ -44,4 +44,27 @@ class TacosClientManager
         
         return $tabTacosClient;
     }
+    
+    public function insertTacosClient($tacos)
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $size = $tacos->getSize();
+        $viande1 = $tacos->getViande1();
+        $viande2 = $tacos->getViande2();
+        $viande3 = $tacos->getViande3();
+        $sauce1 = $tacos->getSauce1();
+        $sauce2 = $tacos->getSauce2();
+        
+        $state = $login->prepare("INSERT INTO TacosClient (idSize, idViande1, idViande2, idViande3, idSauce1, idSauce2) VALUES (?,?,?,?,?,?) ");
+        
+        $state->bindParam(1, $size);
+        $state->bindParam(2, $viande1);
+        $state->bindParam(3, $viande2);
+        $state->bindParam(4, $viande3);
+        $state->bindParam(5, $sauce1);
+        $state->bindParam(6, $sauce2);
+
+        $state->execute();
+    }
 }

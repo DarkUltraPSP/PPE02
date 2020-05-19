@@ -62,20 +62,13 @@ CREATE TABLE BoissonPanier
 	PRIMARY KEY (idBoisson, idPanier)
 );
 
-CREATE TABLE Tacos
+CREATE TABLE Taille
 (
-	idTacos INT AUTO_INCREMENT,
-	nomTacos VARCHAR (64),
-	descriptionTacos LONGTEXT,
-	prixTacos FLOAT,
-	PRIMARY KEY (idTacos)
-);
-
-CREATE TABLE TacosPanier
-(
-	idTacos INT,
-	idPanier INT,
-	PRIMARY KEY (idTacos, idPanier)
+	idTaille INT AUTO_INCREMENT,
+	nomTaille VARCHAR (64),
+	descriptionTaille LONGTEXT,
+	prixTaille FLOAT,
+	PRIMARY KEY (idTaille)
 );
 
 CREATE TABLE Sauce
@@ -86,13 +79,6 @@ CREATE TABLE Sauce
 	PRIMARY KEY (idSauce)
 );
 
-CREATE TABLE SauceTacos
-(
-	idSauce INT,
-	idTacos INT,
-	PRIMARY KEY (idSauce, idTacos)
-);
-
 CREATE TABLE Viande
 (
 	idViande INT AUTO_INCREMENT,
@@ -101,30 +87,23 @@ CREATE TABLE Viande
 	PRIMARY KEY (idViande)
 );
 
-CREATE TABLE ViandeTacos
+CREATE TABLE Tacos
 (
-	idViande INT,
-	idTacos INT,
-	PRIMARY KEY (idViande, idTacos)
-);
-
-CREATE TABLE TacosClient
-(
-	idTacosClient INT AUTO_INCREMENT,
-	idSize INT,
+	idTacos INT AUTO_INCREMENT,
+	idTaille INT,
 	idViande1 INT,
 	idViande2 INT,
 	idViande3 INT,
 	idSauce1 INT,
 	idSauce2 INT,
-	PRIMARY KEY (idTacosClient)
+	PRIMARY KEY (idTacos)
 );
 
-CREATE TABLE TacosClientPanier
+CREATE TABLE TacosPanier
 (
+	idTacos INT,
 	idPanier INT,
-	idTacosClient INT,
-	PRIMARY KEY (idPanier, idTacosClient)
+	PRIMARY KEY (idTacos, idPanier)
 );
 
 ALTER TABLE FritesPanier
@@ -158,46 +137,46 @@ FOREIGN KEY (idPanier)
 REFERENCES Panier (idPanier);
 
 ALTER TABLE TacosPanier
-ADD CONSTRAINT TacosPanier_idTacos
-FOREIGN KEY (idTacos)
-REFERENCES Tacos (idTacos);
-
-ALTER TABLE TacosPanier
 ADD CONSTRAINT TacosPanier_idPanier
 FOREIGN KEY (idPanier)
 REFERENCES Panier (idPanier);
 
-ALTER TABLE SauceTacos
-ADD CONSTRAINT SauceTacos_idSauce
-FOREIGN KEY (idSauce)
-REFERENCES Sauce (idSauce);
-
-ALTER TABLE SauceTacos
-ADD CONSTRAINT SauceTacos_idTacos
+ALTER TABLE TacosPanier
+ADD CONSTRAINT TacosPanier_idTacos
 FOREIGN KEY (idTacos)
 REFERENCES Tacos (idTacos);
 
-ALTER TABLE Viandetacos
-ADD CONSTRAINT ViandeTacos_idViande
-FOREIGN KEY (idViande)
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idTaille
+FOREIGN KEY (idTaille)
+REFERENCES Taille (idTaille);
+
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idViande1
+FOREIGN KEY (idViande1)
 REFERENCES Viande (idViande);
 
-ALTER TABLE ViandeTacos
-ADD CONSTRAINT ViandeTacos_idTacos
-FOREIGN KEY (idTacos)
-REFERENCES Tacos (idTacos);
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idViande2
+FOREIGN KEY (idViande2)
+REFERENCES Viande (idViande);
 
-ALTER TABLE TacosClientPanier
-ADD CONSTRAINT TacosClientPanier_idPanier
-FOREIGN KEY (idPanier)
-REFERENCES Panier (idPanier);
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idViande3
+FOREIGN KEY (idViande3)
+REFERENCES Viande (idViande);
 
-ALTER TABLE TacosClientPanier
-ADD CONSTRAINT TacosClientPanier_idTacosClient
-FOREIGN KEY (idTacosClient)
-REFERENCES TacosClient (idTacosClient);
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idSauce1
+FOREIGN KEY (idSauce1)
+REFERENCES Sauce (idSauce);
 
-INSERT INTO Tacos (nomTacos, descriptionTacos, prixTacos) VALUES
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idSauce2
+FOREIGN KEY (idSauce2)
+REFERENCES Sauce (idSauce);
+
+INSERT INTO Taille (nomTaille, descriptionTaille, prixTaille) VALUES
 ("Tacos M", "1 viande et 1 sauce au choix", 5),
 ("Tacos L", "2 viandes et 2 sauces au choix", 7),
 ("Tacos XL", "3 viandes et 2 sauces au choix", 9);

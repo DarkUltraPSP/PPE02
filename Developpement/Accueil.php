@@ -11,7 +11,7 @@ if (!empty ($_GET["destroy"]))
     }
 }
 
-if (!empty ($_GET))
+if (!empty ($_GET['page']))
 {
     
     switch ($_GET['page'])
@@ -190,7 +190,16 @@ if (!empty ($_GET))
             echo "</pre>";
             break;
             
-        case "InfoClient":
+        case "InfoClient": 
+            include_once 'Pages/InfoClient/InfoClientController.php';
+            $infoClient = new InfoClientController();
+            $infoClient->includeView();
+            
+            if (!empty($_POST["envoieCommande"]))
+            {
+                $infoClient->insertClient($_POST["nom"], $_POST["prenom"], $_POST["adresse"]);
+            }
+            
             break;
             
         case 'connexion':
@@ -217,7 +226,7 @@ if (!empty ($_GET))
     }
     
 }
-else if (empty($_GET))
+else
 {
     ?>
 <h class="bvn"> Bienvenue sur Tacos Of All Time  </h>

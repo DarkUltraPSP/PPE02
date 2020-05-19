@@ -7,17 +7,17 @@ class TacosManager
         $tacos = new Tacos();
         $login = databaseLinker::getConnexion();
         
-        $state = $login->prepare("SELECT * FROM Tacos WHERE idTacos = ?");
+        $state = $login->prepare("SELECT * FROM Taille WHERE idTaille = ?");
         $state->bindParam(1, $idTacos);
         $state->execute();
         $resultat = $state->fetchAll();
         
         foreach ($resultat as $lineResultat)
         {
-            $tacos->setIdTacos($lineResultat["idTacos"]);
-            $tacos->setNomTacos($lineResultat["nomTacos"]);
-            $tacos->setDescriptionTacos($lineResultat["descriptionTacos"]);
-            $tacos->setPrixTacos($lineResultat["prixTacos"]);
+            $tacos->setIdTacos($lineResultat["idTaille"]);
+            $tacos->setNomTacos($lineResultat["nomTaille"]);
+            $tacos->setDescriptionTacos($lineResultat["descriptionTaille"]);
+            $tacos->setPrixTacos($lineResultat["prixTaille"]);
         }
         
         return $tacos;
@@ -29,13 +29,13 @@ class TacosManager
         $tabTacos = [];
         $login = dataBaseLinker::getConnexion();
         
-        $state = $login->prepare("SELECT * FROM Tacos");
+        $state = $login->prepare("SELECT * FROM Taille");
         $state->execute();
         $resultats=$state->fetchAll();
         
         foreach($resultats as $lineResultat)
         {
-            $tacos = TacosManager::findTacos($lineResultat["idTacos"]);
+            $tacos = TacosManager::findTacos($lineResultat["idTaille"]);
             $tabTacos[] = $tacos;
         }
         

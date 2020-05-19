@@ -52,9 +52,20 @@ if (!isset($_SESSION))
             switch ($_GET['page'])
             {
                 case 'commander':
-            ?>
+        ?>
         <link rel="stylesheet" type="text/css" href="Pages/Commande/Commande.css" media="all"/>
-            <?php
+        <?php
+                    break;
+                case 'panier':
+        ?>
+        <link rel="stylesheet" type="text/css" href="Pages/Panier/Panier.css" media="all"/>
+        <?php
+                    break;
+                case 'InfoClient':
+        ?>
+        <link rel="stylesheet" type="text/css" href="Pages/InfoClient/InfoClient.css" media="all"/>
+        <?php
+                    break;
             }
         }
         ?>
