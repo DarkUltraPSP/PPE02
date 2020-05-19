@@ -1,30 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/UwAmp/www/PPE02/Developpement/dataManager/TacosManager.php</file>
-            <file>file:/C:/UwAmp/www/PPE02/Developpement/dataManager/ViandeManager.php</file>
-            <file>file:/C:/UwAmp/www/PPE02/Developpement/Commande/Commande.css</file>
+<<<<<<< Updated upstream
+            <file>file:/C:/UwAmp/www/PPE02/Developpement/include/header.php</file>
+            <file>file:/C:/UwAmp/www/PPE02/Developpement/Pages/Panier/Panier.css</file>
+            <file>file:/C:/UwAmp/www/PPE02/Developpement/Pages/Panier/Panier.php</file>
+            <file>file:/C:/UwAmp/www/PPE02/Developpement/Accueil.php</file>
+            <file>file:/C:/UwAmp/www/PPE02/Developpement/Pages/Panier/PanierController.php</file>
+=======
             <file>file:/C:/UwAmp/www/PPE02/Developpement/Commande/CommandeController.php</file>
             <file>file:/C:/UwAmp/www/PPE02/Developpement/Commande/Commande.php</file>
             <file>file:/C:/UwAmp/www/PPE02/Developpement/Accueil.php</file>
+            <file>file:/C:/UwAmp/www/PPE02/PPE02.sql</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
-=======
->>>>>>> master
-=======
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/wamp64/www/PPE02/Developpement/Inscription/Inscription.css</file>
-            <file>file:/C:/wamp64/www/PPE02/Developpement/Inscription/insertUser.php</file>
-            <file>file:/C:/wamp64/www/PPE02/Developpement/Accueil.php</file>
-            <file>file:/C:/wamp64/www/PPE02/Developpement/Inscription/Inscription.php</file>
-            <file>file:/C:/wamp64/www/PPE02/Developpement/Connexion/ConnexionController.php</file>
-            <file>file:/C:/wamp64/www/PPE02/Developpement/Connexion/Connexion.php</file>
-        </group>
-    </open-files>
->>>>>>> master
 </project-private>

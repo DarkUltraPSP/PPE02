@@ -41,4 +41,21 @@ class ClientManager
         
         return $tabClient;
     }
+    
+    public static function insertClient($client)
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $nom = $client->getNom();
+        $prenom = $client->getPrenom();
+        $adresse = $client->getAdresse();
+        
+        $state = $login->prepare("INSERT INTO Client (nom, prenom, adresse) VALUES (?, ?, ?)");
+        
+        $state->bindParam(1, $nom);
+        $state->bindParam(2, $prenom);
+        $state->bindParam(3, $adresse);
+        
+        $state->execute();
+    }
 }

@@ -7,16 +7,17 @@ USE PPE02;
 
 CREATE TABLE Frites
 (
-	idFrites INT AUTO_INCREMENT,
-	nomFrites VARCHAR (64),
-	prixFrites FLOAT,
-	PRIMARY KEY (idFrites)
+    idFrites INT AUTO_INCREMENT,
+    nomFrites VARCHAR (64),
+    prixFrites FLOAT,
+    PRIMARY KEY (idFrites)
 );
 
 CREATE TABLE FritesPanier
 (
 	idFrites INT,
 	idPanier INT,
+	quantite INT,
 	PRIMARY KEY (idFrites, idPanier)
 );
 
@@ -29,42 +30,72 @@ CREATE TABLE Panier
 
 CREATE TABLE Client
 (
-	idClient INT AUTO_INCREMENT,
-	nomClient VARCHAR (64),
-	prenomClient VARCHAR (64),
-	mail VARCHAR (128),
-	adresse VARCHAR (64),
-	password VARCHAR (64),
-	PRIMARY KEY (idClient)
+    idClient INT AUTO_INCREMENT,
+    nomClient VARCHAR (64),
+    prenomClient VARCHAR (64),
+    mail VARCHAR (128),
+    adresse VARCHAR (64),
+    password VARCHAR (64),
+    PRIMARY KEY (idClient)
 );
 
 CREATE TABLE ClientPanier
 (
-	idClient INT,
-	idPanier INT,
-	PRIMARY KEY (idClient, idPanier)
+    idClient INT,
+    idPanier INT,
+    PRIMARY KEY (idClient, idPanier)
 );
 
 CREATE TABLE Boisson
 (
-	idBoisson INT AUTO_INCREMENT,
-	nomBoisson VARCHAR (64),
-	prixBoisson VARCHAR (64),
-	PRIMARY KEY (idBoisson)
+    idBoisson INT AUTO_INCREMENT,
+    nomBoisson VARCHAR (64),
+    prixBoisson VARCHAR (64),
+    PRIMARY KEY (idBoisson)
 );
 
 CREATE TABLE BoissonPanier
 (
 	idBoisson INT,
 	idPanier INT,
+	quantite INT,
 	PRIMARY KEY (idBoisson, idPanier)
+);
+
+CREATE TABLE Taille
+(
+	idTaille INT AUTO_INCREMENT,
+	nomTaille VARCHAR (64),
+	descriptionTaille LONGTEXT,
+	prixTaille FLOAT,
+	PRIMARY KEY (idTaille)
+);
+
+CREATE TABLE Sauce
+(
+    idSauce INT AUTO_INCREMENT,
+    nomSauce VARCHAR (64),
+    descriptionSauce LONGTEXT,
+    PRIMARY KEY (idSauce)
+);
+
+CREATE TABLE Viande
+(
+    idViande INT AUTO_INCREMENT,
+    nomViande VARCHAR (64),
+    descriptionViande LONGTEXT,
+    PRIMARY KEY (idViande)
 );
 
 CREATE TABLE Tacos
 (
 	idTacos INT AUTO_INCREMENT,
-	nomTacos VARCHAR (64),
-	descriptionTacos LONGTEXT,
+	idTaille INT,
+	idViande1 INT,
+	idViande2 INT,
+	idViande3 INT,
+	idSauce1 INT,
+	idSauce2 INT,
 	PRIMARY KEY (idTacos)
 );
 
@@ -73,55 +104,6 @@ CREATE TABLE TacosPanier
 	idTacos INT,
 	idPanier INT,
 	PRIMARY KEY (idTacos, idPanier)
-);
-
-CREATE TABLE Sauce
-(
-	idSauce INT AUTO_INCREMENT,
-	nomSauce VARCHAR (64),
-	descriptionSauce LONGTEXT,
-	PRIMARY KEY (idSauce)
-);
-
-CREATE TABLE SauceTacos
-(
-	idSauce INT,
-	idTacos INT,
-	PRIMARY KEY (idSauce, idTacos)
-);
-
-CREATE TABLE Viande
-(
-	idViande INT AUTO_INCREMENT,
-	nomViande VARCHAR (64),
-	descriptionViande LONGTEXT,
-	PRIMARY KEY (idViande)
-);
-
-CREATE TABLE ViandeTacos
-(
-	idViande INT,
-	idTacos INT,
-	PRIMARY KEY (idViande, idTacos)
-);
-
-CREATE TABLE TacosClient
-(
-	idTacosClient INT AUTO_INCREMENT,
-	idSize INT,
-	idViande1 INT,
-	idViande2 INT,
-	idViande3 INT,
-	idSauce1 INT,
-	idSauce2 INT,
-	PRIMARY KEY (idTacosClient)
-);
-
-CREATE TABLE TacosClientPanier
-(
-	idPanier INT,
-	idTacosClient INT,
-	PRIMARY KEY (idPanier, idTacosClient)
 );
 
 ALTER TABLE FritesPanier
@@ -155,49 +137,49 @@ FOREIGN KEY (idPanier)
 REFERENCES Panier (idPanier);
 
 ALTER TABLE TacosPanier
-ADD CONSTRAINT TacosPanier_idTacos
-FOREIGN KEY (idTacos)
-REFERENCES Tacos (idTacos);
-
-ALTER TABLE TacosPanier
 ADD CONSTRAINT TacosPanier_idPanier
 FOREIGN KEY (idPanier)
 REFERENCES Panier (idPanier);
 
-ALTER TABLE SauceTacos
-ADD CONSTRAINT SauceTacos_idSauce
-FOREIGN KEY (idSauce)
-REFERENCES Sauce (idSauce);
-
-ALTER TABLE SauceTacos
-ADD CONSTRAINT SauceTacos_idTacos
+ALTER TABLE TacosPanier
+ADD CONSTRAINT TacosPanier_idTacos
 FOREIGN KEY (idTacos)
 REFERENCES Tacos (idTacos);
 
-ALTER TABLE Viandetacos
-ADD CONSTRAINT ViandeTacos_idViande
-FOREIGN KEY (idViande)
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idTaille
+FOREIGN KEY (idTaille)
+REFERENCES Taille (idTaille);
+
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idViande1
+FOREIGN KEY (idViande1)
 REFERENCES Viande (idViande);
 
-ALTER TABLE ViandeTacos
-ADD CONSTRAINT ViandeTacos_idTacos
-FOREIGN KEY (idTacos)
-REFERENCES Tacos (idTacos);
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idViande2
+FOREIGN KEY (idViande2)
+REFERENCES Viande (idViande);
 
-ALTER TABLE TacosClientPanier
-ADD CONSTRAINT TacosClientPanier_idPanier
-FOREIGN KEY (idPanier)
-REFERENCES Panier (idPanier);
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idViande3
+FOREIGN KEY (idViande3)
+REFERENCES Viande (idViande);
 
-ALTER TABLE TacosClientPanier
-ADD CONSTRAINT TacosClientPanier_idTacosClient
-FOREIGN KEY (idTacosClient)
-REFERENCES TacosClient (idTacosClient);
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idSauce1
+FOREIGN KEY (idSauce1)
+REFERENCES Sauce (idSauce);
 
-INSERT INTO Tacos (nomTacos, descriptionTacos) VALUES
-("Tacos M", "1 viande et 1 sauce au choix"),
-("Tacos L", "2 viandes et 2 sauces au choix"),
-("Tacos XL", "3 viandes et 2 sauces au choix");
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idSauce2
+FOREIGN KEY (idSauce2)
+REFERENCES Sauce (idSauce);
+
+INSERT INTO Taille (nomTaille, descriptionTaille, prixTaille) VALUES
+("Tacos M", "1 viande et 1 sauce au choix", 5),
+("Tacos L", "2 viandes et 2 sauces au choix", 7),
+("Tacos XL", "3 viandes et 2 sauces au choix", 9);
 
 INSERT INTO Viande (nomViande, descriptionViande) VALUES
 ("Escalope de poulet", "De tendres escalopes de poulet"),

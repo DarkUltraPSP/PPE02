@@ -1,11 +1,11 @@
 <?php
 
-class TacosManager
+class TacosManager 
 {
     public static function findTacos($idTacos)
     {
         $tacos = new Tacos();
-        $login = databaseLinker::getConnexion();
+        $login = DatabaseLinker::getConnexion();
         
         $state = $login->prepare("SELECT * FROM Tacos WHERE idTacos = ?");
         $state->bindParam(1, $idTacos);
@@ -15,8 +15,12 @@ class TacosManager
         foreach ($resultat as $lineResultat)
         {
             $tacos->setIdTacos($lineResultat["idTacos"]);
-            $tacos->setNomTacos($lineResultat["nomTacos"]);
-            $tacos->setDescriptionTacos($lineResultat["descriptionTacos"]);
+            $tacos->setIdTaille($lineResultat["idTaille"]);
+            $tacos->setIdViande1($lineResultat["idViande1"]);
+            $tacos->setIdViande2($lineResultat["idViande2"]);
+            $tacos->setIdViande3($lineResultat["idViande3"]);
+            $tacos->setIdSauce1($lineResultat["idSauce1"]);
+            $tacos->setIdSauce2($lineResultat["idSauce2"]);
         }
         
         return $tacos;
@@ -34,7 +38,7 @@ class TacosManager
         
         foreach($resultats as $lineResultat)
         {
-            $tacos = TacosManager::findTacos($lineResultat["idTacos"]);
+            $tacos = TacosManager::findAllTacos($lineResultat["idTacos"]);
             $tabTacos[] = $tacos;
         }
         

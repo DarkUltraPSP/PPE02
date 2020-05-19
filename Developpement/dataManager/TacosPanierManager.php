@@ -1,10 +1,10 @@
 <?php
 
-class TacosPanierManager 
+class TacosPanierManager
 {
     public static function findTacosPanier($idPanier)
     {
-        $tacosPanier = new TacosPanier();
+        $tacosP = new TacosPanier();
         $login = DatabaseLinker::getConnexion();
         
         $state = $login->prepare("SELECT * FROM TacosPanier WHERE idPanier = ?");
@@ -14,29 +14,29 @@ class TacosPanierManager
         
         foreach ($resultat as $lineResultat)
         {
-            $tacosPanier->setIdPanier($lineResultat["idPanier"]);
-            $tacosPanier->setIdTacos($lineResultat["idTacos"]);
+            $tacosP->setIdPanier($lineResultat["idPanier"]);
+            $tacosP->setIdTacos($lineResultat["idTacos"]);
         }
         
-        return $tacosPanier;
+        return $tacosP;
     }
     
     public static function findAllTacosPanier()
     {
-        $tacosPanier = new TacosPanier();
-        $tabTacosPanier = [];
+        $tacosP = new TacosPanier();
         $login = dataBaseLinker::getConnexion();
         
         $state = $login->prepare("SELECT * FROM TacosPanier");
+        $tabTacosP = [];
         $state->execute();
         $resultats=$state->fetchAll();
         
         foreach($resultats as $lineResultat)
         {
-            $tacosPanier = TacosPanierManager::findAllTacosPanier($lineResultat["idPanier"]);
-            $tabTacosPanier[] = $tacosPanier;
+            $tacosP = TacosPanierManager::findAllTacosPanier($lineResultat["idPanier"]);
+            $tabTacosP[] = $tacosP;
         }
         
-        return $tabTacosPanier;
+        return $tabTacosP;
     }
 }
