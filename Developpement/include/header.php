@@ -63,6 +63,11 @@ if (!isset($_SESSION))
         <link rel="stylesheet" type="text/css" href="Pages/InfoClient/InfoClient.css" media="all"/>
         <?php
                     break;
+                case 'contact':
+        ?>
+        <link rel="stylesheet" type="text/css" href="Pages/Contact/Contact.css" media="all"/>
+        <?php
+                    break;
             }
         }
         ?>

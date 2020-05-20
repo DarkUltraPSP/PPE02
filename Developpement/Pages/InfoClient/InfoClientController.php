@@ -27,41 +27,8 @@ class InfoClientController
         PanierManager::insertPrixTotal($panier);
     }
     
-    public function insertTacosM($size, $viande1, $sauce1)
-    {
-        $tacos = new Tacos();
-        
-        $tacos->setIdTaille($size);
-        $tacos->setViande1($viande1);
-        $tacos->setSauce1($sauce1);
-        
-        TacosManager::insertTacos($tacos);
-    }
-    
-    public function insertTacosL($size, $viande1, $viande2, $sauce1, $sauce2)
-    {
-        $tacos = new Tacos();
-        
-        $tacos->setIdTaille($size);
-        $tacos->setViande1($viande1);
-        $tacos->setViande2($viande2);
-        $tacos->setSauce1($sauce1);
-        $tacos->setSauce2($sauce2);
-        
-        TacosManager::insertTacos($tacos);
-    }
-    
-    public function insertTacosXL($size, $viande1, $viande2, $viande3, $sauce1, $sauce2)
-    {
-        $tacos = new Tacos();
-        
-        $tacos->setIdTaille($size);
-        $tacos->setViande1($viande1);
-        $tacos->setViande2($viande2);
-        $tacos->setViande3($viande3);
-        $tacos->setSauce1($sauce1);
-        $tacos->setSauce2($sauce2);
-        
+    public function insertTacos($tacos)
+    {        
         TacosManager::insertTacos($tacos);
     }
     

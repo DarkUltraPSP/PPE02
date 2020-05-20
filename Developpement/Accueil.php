@@ -206,6 +206,12 @@ if (!empty ($_GET['page']))
                 $infoClient->createPanier($_POST["prixTotal"]);
                 
                 $idPanier = PanierManager::getLatestCartID();
+                
+                foreach ($tacos as $t)
+                {
+                    $infoClient->insertTacos($t);
+                }
+                
             }
             
             break;
