@@ -156,19 +156,25 @@ else
     ?>
 
 <div class="divTitre">
+    <form method="POST" action="Accueil.php?page=commander">
+    <input type="submit" name="retourViande" value="Retour"/>
+    </form>
+    <form method="POST" action="Accueil.php?page=commander">
+        <input type="submit" name="delTacos" value="Annuler"/>
+    </form>
     <?php 
-                    if ($_SESSION["size"] == 1) 
-                    {
+        if ($_SESSION["size"] == 1) 
+        {
     ?>
     <h class="selectSize"> Selectionnez <?php echo $nbSauce ?> sauce</h>
     <?php
-                    }
-                    else
-                    {
+        }
+        else
+        {
     ?>
     <h class="selectSize"> Selectionnez <?php echo $nbSauce ?> sauces</h>
     <?php
-                    }
+        }
     ?>
 </div>
 <form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
@@ -201,91 +207,93 @@ else
                     }
             ?>
     </div>
-    <input type="submit" value="Valider"/>
+    <div class="validation">
+        <input class="bouton" type="submit" value="Valider"/>
+    </div>
 </form>
 
-<form method="POST" action="Accueil.php?page=commander">
-    <input type="submit" name="retourViande" value="Retour"/>
-</form>
-<form method="POST" action="Accueil.php?page=commander">
-    <input type="submit" name="delTacos" value="Annuler"/>
-</form>
+
 <?php
                 }
             }
             else //Recapitulatif avant de mettre dans un objet
             {
                 ?>
-<p> Récapitulatif : </p>
-<?php
-                foreach ($tailles as $taille) //Recap taille tacos choisie
-                {
-                    if ($taille->getIdTaille() == $_SESSION["size"])
+<div class="recap">
+    <p class="entete-recap"> Récapitulatif de la commande: </p>
+    <?php
+                    foreach ($tailles as $taille) //Recap taille tacos choisie
                     {
-?>
-<p> <?php echo $taille->getNomTaille();?>
+                        if ($taille->getIdTaille() == $_SESSION["size"])
+                        {
+    ?>
+    <p> <?php echo $taille->getNomTaille();?>
 
-<?php
-                    }
-                }
-                
-                foreach ($viandes as $viande) //Recap viandes choisies
-                {
-                    if ($viande->getIdViande() == $_SESSION["viande0"])
-                    {
-?>
-<p> <?php echo $viande->getNomViande(); ?> </p>
-<?php
-                    }
-                    if (!empty($_SESSION["viande1"]))
-                    {
-                        if ($viande->getIdViande() == $_SESSION["viande1"])
-                        {
-?>
-<p> <?php echo $viande->getNomViande(); ?> </p>
-<?php
+    <?php
                         }
                     }
-                    if (!empty($_SESSION["viande2"]))
+
+                    foreach ($viandes as $viande) //Recap viandes choisies
                     {
-                        if ($viande->getIdViande() == $_SESSION["viande2"])
+                        if ($viande->getIdViande() == $_SESSION["viande0"])
                         {
-?>
-<p> <?php echo $viande->getNomViande(); ?> </p>
-<?php
+    ?>
+    <p> <?php echo $viande->getNomViande(); ?> </p>
+    <?php
+                        }
+                        if (!empty($_SESSION["viande1"]))
+                        {
+                            if ($viande->getIdViande() == $_SESSION["viande1"])
+                            {
+    ?>
+    <p> <?php echo $viande->getNomViande(); ?> </p>
+    <?php
+                            }
+                        }
+                        if (!empty($_SESSION["viande2"]))
+                        {
+                            if ($viande->getIdViande() == $_SESSION["viande2"])
+                            {
+    ?>
+    <p> <?php echo $viande->getNomViande(); ?> </p>
+    <?php
+                            }
                         }
                     }
-                }
-                
-                foreach ($sauces as $sauce) //Recap des sauces choisies
-                {
-                    if ($sauce->getIdSauce() == $_SESSION["sauce0"])
+
+                    foreach ($sauces as $sauce) //Recap des sauces choisies
                     {
-?>
-<p> <?php echo $sauce->getNomSauce(); ?> </p>
-<?php
-                    }
-                    if (!empty($_SESSION["sauce1"]))
-                    {
-                        if ($sauce->getIdSauce() == $_SESSION["sauce1"])
+                        if ($sauce->getIdSauce() == $_SESSION["sauce0"])
                         {
-?>
-<p> <?php echo $sauce->getNomSauce(); ?> </p>
-<?php
+    ?>
+    <p> <?php echo $sauce->getNomSauce(); ?> </p>
+    <?php
+                        }
+                        if (!empty($_SESSION["sauce1"]))
+                        {
+                            if ($sauce->getIdSauce() == $_SESSION["sauce1"])
+                            {
+    ?>
+    <p> <?php echo $sauce->getNomSauce(); ?> </p>
+    <?php
+                            }
                         }
                     }
-                }
-                ?>
-<form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
-    <input type="submit" name="retourSauce" value="Retour"/>
-</form>
-<form method="POST" action="Accueil.php?page=commander">
-    <input type="submit" name="delTacos" value="Annuler"/>
-</form>
-<form method="POST" action="Accueil.php?page=commander">
-    <input type="hidden" name="confirmationTacos" value="true"/>
-    <input type="submit" value="Ajouter au panier"/>
-</form>
+                    ?>
+</div>
+<div class="confirmCommande">
+    <form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
+        <input type="submit" name="retourSauce" value="Retour"/>
+    </form>
+    <form method="POST" action="Accueil.php?page=commander">
+        <input type="submit" name="delTacos" value="Annuler"/>
+    </form>
+    <form method="POST" action="Accueil.php?page=commander">
+        <input type="hidden" name="confirmationTacos" value="true"/>
+        <input type="submit" value="Ajouter au panier"/>
+    </form>
+</div>
+
 <?php
             }
             break;

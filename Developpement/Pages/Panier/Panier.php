@@ -24,16 +24,16 @@ if (!empty($_SESSION["boissons"]))
     $boissonClient = $_SESSION["boissons"];
 }
 ?>
-<p> Votre Panier : </p>
+<p class="titre"> Votre Panier : </p>
 
-<table>
+<table class="liste">
     <tr>
         <td> Produits </td>
         <td> Quantite </td>
         <td> Prix </td>
     </tr>
     <tr class="titreTab">
-        <td> Tacos </td>
+        <td> Tacos :</td>
     </tr>
     <?php
     $tacosCpt = 0;
@@ -73,6 +73,7 @@ if (!empty($tacosClient))
             1
         </td>
         <td> <?php //Prix du Tacos ?>
+            
             <?php
             foreach ($tailles as $size)
             {
@@ -99,7 +100,7 @@ if (!empty($tacosClient))
 }
     ?>
     <tr>
-        <td> Frites </td>
+        <td> Frites :</td>
     </tr>
     <?php
 if (!empty($fritesClient))
@@ -132,7 +133,7 @@ if (!empty($fritesClient))
 }
     ?>
     <tr>
-        <td> Boissons </td>
+        <td> Boissons :</td>
     </tr>
     <tbody>
     <?php
@@ -175,10 +176,12 @@ if (!empty($boissonClient))
 if (isset($_SESSION["tacos"]))
 {
 ?>
-<form method="POST" action="Accueil.php?page=infoClient">
-    <input type="hidden" name="prixTotal" value="<?php echo $prixTotal ?>"/>
-    <input type="submit" name="validCommande" value="Valider ma commande"/>
-</form>
+<div class="validation">
+    <form method="POST" action="Accueil.php?page=infoClient">
+        <input type="hidden" name="prixTotal" value="<?php echo $prixTotal ?>"/>
+        <input class="validCommande" type="submit" name="validCommande" value="Valider ma commande"/>
+    </form>
+</div>
 <?php
 }
 else if (isset ($_SESSION["frites"]) || isset ($_SESSION["boisson"]))

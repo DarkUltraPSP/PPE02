@@ -50,12 +50,12 @@ if (!isset($_SESSION))
             {
                 case 'commander':
         ?>
-        <link rel="stylesheet" type="text/css" href="Pages/Commande/Commande" media="all"/>
+        <link rel="stylesheet" type="text/css" href="Pages/Commande/Commande.css" media="all"/>
         <?php
                     break;
                 case 'panier':
         ?>
-        <link rel="stylesheet" type="text/css" href="Pages/Panier/Panier.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="Pages/Panier/panier" media="all"/>
         <?php
                     break;
                 case 'infoClient':
@@ -68,6 +68,7 @@ if (!isset($_SESSION))
         <link rel="stylesheet" type="text/css" href="Pages/Contact/contact.css" media="all"/>
         <?php
                     break;
+
             }
         }
         ?>
