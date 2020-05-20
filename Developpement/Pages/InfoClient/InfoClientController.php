@@ -27,11 +27,21 @@ class InfoClientController
         PanierManager::insertPrixTotal($panier);
     }
     
-    public function insertTacos($tacos)
-    {        
+    public function insertTacos($size, $viande1, $viande2, $viande3, $sauce1, $sauce2)
+    {
+        $tacos = new Tacos();
+        
+        $tacos->setIdTaille($size);
+        $tacos->setIdViande1($viande1);
+        $tacos->setIdViande2($viande2);
+        $tacos->setIdViande3($viande3);
+        $tacos->setIdSauce1($sauce1);
+        $tacos->setIdSauce2($sauce2);
+        
         TacosManager::insertTacos($tacos);
+        return $tacos;
     }
-    
+
     public function insertFrites($idFrites, $idPanier, $quantite)
     {
         $frites = new FritesPanier;
@@ -39,6 +49,9 @@ class InfoClientController
         $frites->setIdFrites($idFrites);
         $frites->setIdPanier($idPanier);
         $frites->setQuantite($quantite);
+        
+        FritesPanierManager::insertFrites($frites);
+        
     }
     
     public function insertBoissons($idBoisson, $idPanier, $quantite)
