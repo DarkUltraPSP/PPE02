@@ -40,4 +40,16 @@ class FritesPanierManager
         
         return $tabFritesPanier;
     }
+    
+    public static function insertFrites($frites) 
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $idFrites = $frites->getIdFrites();
+        $idPanier = $frites->getIdPanier();
+        $quantite = $frites->getQuantite();
+        
+        $state = $login->prepare("INSERT INTO FritesPanier (idFrites, idPanier, quantite) VALUES (?,?,?)");
+        
+    }
 }

@@ -197,21 +197,34 @@ if (!empty ($_GET['page']))
             $infoClient = new InfoClientController();
             $infoClient->includeView();
             
-            if (!empty($_POST["envoieCommande"]))
+            if (!empty($_POST["envoieCommande"])) //Envoie de la commande en BDD
             {
                 $tacos = $_SESSION["tacos"];
-                $frites = $_SESSION["frites"];
-                $boisson = $_SESSION["boissons"];
+                
+                if (!empty($_SESSION["boissons"]))
+                {
+                    $boisson = $_SESSION["boissons"];
+                }
                 $infoClient->insertClient($_POST["nom"], $_POST["prenom"], $_POST["adresse"]);
-                $infoClient->createPanier($_POST["prixTotal"]);
+                $infoClient->createPanier($_POST["prixTotal"]);//Creer un panier en BDD
                 
                 $idPanier = PanierManager::getLatestCartID();
                 
-                foreach ($tacos as $t)
+                foreach ($tacos as $t) //Envoie des tacos en BDD
                 {
-                    $infoClient->insertTacos($t);
+                    $newTacos = $infoClient->insertTacos($t->getIdTaille(), $t->getIdViande1(), $t->getIdViande2(), $t->getIdViande3(), $t->getIdSauce1(), $t->getIdSauce2());
+                    $t->setIdTacos($newTacos->getIdTacos());
                 }
                 
+                if (!empty($_SESSION["frites"]))
+                {
+                    $frites = $_SESSION["frites"];
+                
+                    foreach ($frites as $f) //Envoie des frites en BDD
+                    {
+                        $infoClient->insertFrites($f->getIdFrites(), $idPanier, $f->getQuantite());
+                    }
+                }
             }
             
             break;
