@@ -192,14 +192,20 @@ if (!empty ($_GET['page']))
             echo "</pre>";
             break;
             
-        case "InfoClient": 
+        case "infoClient": 
             include_once 'Pages/InfoClient/InfoClientController.php';
             $infoClient = new InfoClientController();
             $infoClient->includeView();
             
             if (!empty($_POST["envoieCommande"]))
             {
+                $tacos = $_SESSION["tacos"];
+                $frites = $_SESSION["frites"];
+                $boisson = $_SESSION["boissons"];
                 $infoClient->insertClient($_POST["nom"], $_POST["prenom"], $_POST["adresse"]);
+                $infoClient->createPanier($_POST["prixTotal"]);
+                
+                $idPanier = PanierManager::getLatestCartID();
             }
             
             break;

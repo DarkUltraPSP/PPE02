@@ -50,7 +50,7 @@ class ClientManager
         $prenom = $client->getPrenom();
         $adresse = $client->getAdresse();
         
-        $state = $login->prepare("INSERT INTO Client (nom, prenom, adresse) VALUES (?, ?, ?)");
+        $state = $login->prepare("INSERT INTO Client (nomClient, prenomClient, adresse) VALUES (?, ?, ?)");
         
         $state->bindParam(1, $nom);
         $state->bindParam(2, $prenom);

@@ -4,7 +4,7 @@ class PanierManager
 {
     public static function findPanier($idPanier)
     {
-        $idPanier = new Panier();
+        $panier = new Panier();
         $login = DatabaseLinker::getConnexion();
         
         $state = $login->prepare("SELECT * FROM Panier WHERE idPanier = ?");
@@ -14,7 +14,8 @@ class PanierManager
         
         foreach ($resultat as $lineResultat)
         {
-            $idPanier->setIdPanier($lineResultat["idPanier"]);
+            $panier->setIdPanier($lineResultat["idPanier"]);
+            $panier->setPrix($lineResultat["idPanier"]);
         }
         
         return $idPanier;
@@ -37,5 +38,35 @@ class PanierManager
         }
         
         return $tabPanier;
+    }
+    
+    public static function insertPrixTotal($panier)
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $prix = $panier->getPrix();
+        
+        $state = $login->prepare("INSERT INTO Panier (prix) VALUES (?)");
+        
+        $state->bindParam(1, $prix);
+        
+        $state->execute();
+    }
+    
+    public static function getLatestCartID()
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $state = $login->prepare("SELECT idPanier FROM Panier ORDER BY idPanier DESC LIMIT 1");
+        
+        $state->execute();
+        $resultats=$state->fetchAll();
+        
+        foreach($resultats as $lineResultat)
+        {
+            $latestCart = $lineResultat["idPanier"];
+        }
+        
+        return $latestCart;
     }
 }

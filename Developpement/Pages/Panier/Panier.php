@@ -175,8 +175,8 @@ if (!empty($boissonClient))
 if (isset($_SESSION["tacos"]))
 {
 ?>
-<form method="POST" action="Accueil.php?page=panier">
-    <input type="hidden" name="nbTacosCommande" value="<?php echo count($_SESSION["tacos"]); ?>"/>
+<form method="POST" action="Accueil.php?page=infoClient">
+    <input type="hidden" name="prixTotal" value="<?php echo $prixTotal ?>"/>
     <input type="submit" name="validCommande" value="Valider ma commande"/>
 </form>
 <?php
@@ -184,7 +184,7 @@ if (isset($_SESSION["tacos"]))
 else if (isset ($_SESSION["frites"]) || isset ($_SESSION["boisson"]))
 {
 ?>
-<div class="erreurPanier"> Vous ne devez commander au moins 1 tacos pour commander des frites et/ou une boisson</div>
+<div class="erreurPanier"> Vous devez commander au moins 1 tacos pour commander des frites et/ou une boisson</div>
 <?php
 }
 else if (!isset($_SESSION["tacos"]))

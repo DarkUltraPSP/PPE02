@@ -38,10 +38,33 @@ class TacosManager
         
         foreach($resultats as $lineResultat)
         {
-            $tacos = TacosManager::findAllTacos($lineResultat["idTacos"]);
+            $tacos = TacosManager::findTacos($lineResultat["idTacos"]);
             $tabTacos[] = $tacos;
         }
         
         return $tabTacos;
+    }
+    
+    public static function insertTacos($tacos)
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $size = $tacos->getIdTaille();
+        $viande1 = $tacos->getIdViande1();
+        $viande2 = $tacos->getIdViande2();
+        $viande3 = $tacos->getIdViande3();
+        $sauce1 = $tacos->getIdSauce1();
+        $sauce2 = $tacos->getidSauce2();
+        
+        $state = $login->prepare("INSERT INTO Tacos (idTaille, idViande1, idViande2, idViande3, idSauce1, idSauce2) VALUES (?,?,?,?,?,?)");
+        
+        $state->bindParam(1, $size);
+        $state->bindParam(2, $viande1);
+        $state->bindParam(3, $viande2);
+        $state->bindParam(4, $viande3);
+        $state->bindParam(5, $sauce1);
+        $state->bindParam(6, $sauce2);
+        
+        $state->execute();
     }
 }
