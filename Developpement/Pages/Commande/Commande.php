@@ -64,9 +64,14 @@ else
                     }
         ?>
         </div>
-        <input type="submit" value="Valider"/>
+        <div class ="validation">
+            
+            <a class="bouton" href="Accueil.php?page=commander"><button>Retour</button></a>
+            <input class="bouton" type="submit" value="Valider"/>
+        </div>
     </form>
-<a href="Accueil.php?page=commander"><button>Retour</button></a>
+    
+
     <?php
                 }
 
@@ -74,6 +79,12 @@ else
                 {
     ?>
     <div class="divTitre">
+        <form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
+        <input type="submit" name="retourSize" value="Retour"/>
+        </form>
+        <form method="POST" action="Accueil.php?page=commander">
+            <input type="submit" name="delTacos" value="Annuler"/>
+        </form>
         <?php 
                     if ($_SESSION["size"] == 1) 
                     {
@@ -97,7 +108,9 @@ else
                     {
             ?>
             <div class="containerViande">
-                <p> Viande n°<?php echo $index ?></p>
+                <p class="numViande"> Viande n°<?php echo $index ?></p>
+                </br>
+                <div class="allViandes">
                 <?php
                         foreach ($viandes as $viande)
                         {
@@ -112,20 +125,19 @@ else
                 <?php
                             $i++;
                         }
-                        ?>
+               
+                        ?> 
+                </div>
             </div>
                 <?php
                     }
             ?>
         </div>
-        <input type="submit" value="Valider"/>
+        <div class="validation">
+            <input class="bouton" type="submit" value="Valider"/>
+        </div>
     </form>
-<form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
-    <input type="submit" name="retourSize" value="Retour"/>
-</form>
-<form method="POST" action="Accueil.php?page=commander">
-    <input type="submit" name="delTacos" value="Annuler"/>
-</form>
+
     <?php   
                 }
 

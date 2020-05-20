@@ -50,7 +50,7 @@ if (!isset($_SESSION))
             {
                 case 'commander':
         ?>
-        <link rel="stylesheet" type="text/css" href="Pages/Commande/Commande.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="Pages/Commande/Commande" media="all"/>
         <?php
                     break;
                 case 'panier':
