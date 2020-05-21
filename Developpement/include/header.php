@@ -53,27 +53,36 @@ if (!isset($_SESSION))
         <link rel="stylesheet" type="text/css" href="Pages/Commande/Commande.css" media="all"/>
         <?php
                     break;
+                
                 case 'panier':
         ?>
         <link rel="stylesheet" type="text/css" href="Pages/Panier/panier.css" media="all"/>
         <?php
                     break;
+                
                 case 'infoClient':
         ?>
         <link rel="stylesheet" type="text/css" href="Pages/InfoClient/InfoClient.css" media="all"/>
         <?php
                     break;
+                
                 case 'contact':
         ?>
         <link rel="stylesheet" type="text/css" href="Pages/Contact/contact.css" media="all"/>
         <?php
                     break;
+                
                 case 'accueil':
         ?>
         <link rel="stylesheet" type="text/css" href="Pages/Accueil/accueil.css" media="all"/>
         <?php
                     break;
-
+                
+                case 'carte':
+        ?>
+        <link rel="stylesheet" type="text/css" href="Pages/Carte/Carte.css" media="all"/>
+        <?php
+                    break;
             }
         }
         ?>

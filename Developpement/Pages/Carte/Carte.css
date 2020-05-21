@@ -1,0 +1,94 @@
+.AllProduits
+{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.Garniture
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.Supplement
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.Tailles
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.nomCategorie
+{
+    font-size: 50px;
+    text-align: center;
+    text-decoration: underline overline;
+}
+
+.nomProduit
+{
+    font-size: 30px;
+}
+
+.Categorie
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 50%;
+    margin: 20px;
+}
+
+.descProduit
+{
+    font-size: 20px;
+    color: #414141;
+}
+
+.suppNom
+{
+    width: 80%;
+}
+
+.prix
+{
+    width: 20%;
+    font-size: 30px;
+    text-align: end;
+}
+
+.singleTaille
+{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px dashed;
+    margin: 10px;
+}
+
+.singleViande
+{
+    margin: 10px;
+}
+
+.singleSauce
+{
+    margin: 10px;
+}
+
+.singleSupp
+{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px dashed;
+    margin: 10px;
+}
+
+.desc
+{
+    width: 80%;
+}

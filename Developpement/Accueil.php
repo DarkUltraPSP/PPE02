@@ -158,11 +158,6 @@ if (!empty ($_GET['page']))
                 $commande->unsetSessionBoisson();
             }
             
-            echo "<pre>";
-            print_r($_SESSION);
-            print_r($_POST);
-            echo "</pre>";
-            
             break;
             
         case "panier":
@@ -185,11 +180,7 @@ if (!empty ($_GET['page']))
                 $panier->removeBoisson($_POST["arrayPosBoisson"]);
                 $panier->refreshPanier();
             }
-            
-            echo "<pre>";
-            print_r($_SESSION);
-            print_r($_POST);
-            echo "</pre>";
+
             break;
             
         case "infoClient": 
@@ -281,6 +272,13 @@ if (!empty ($_GET['page']))
 
 <meta http-equiv="refresh" content="10;URL=Accueil.php">
 <?php
+            break;
+        
+        case "carte" :
+            include_once 'Pages/Carte/CarteController.php';
+            $carte = new CarteController();
+            $carte->includeView();
+            
             break;
         
         case "contact":
