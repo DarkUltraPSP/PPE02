@@ -62,7 +62,7 @@ if (!isset($_SESSION))
                 
                 case 'infoClient':
         ?>
-        <link rel="stylesheet" type="text/css" href="Pages/InfoClient/InfoClient.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="Pages/InfoClient/InfoClient" media="all"/>
         <?php
                     break;
                 
