@@ -55,7 +55,7 @@ if (!isset($_SESSION))
                     break;
                 case 'panier':
         ?>
-        <link rel="stylesheet" type="text/css" href="Pages/Panier/panier.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="Pages/Panier/panier" media="all"/>
         <?php
                     break;
                 case 'infoClient':
