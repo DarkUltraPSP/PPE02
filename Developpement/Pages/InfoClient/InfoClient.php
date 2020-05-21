@@ -7,7 +7,7 @@
         Veuillez renseigner les champs suivants afin de finaliser votre commande :
     </div>
     </br>
-    <div class="casesClient" 
+    <div class="casesClient">
         <form method="POST" action="Accueil.php?page=infoClient">
             <div class="container-info">
                 <input type="hidden" name="prixTotal" value="<?php echo $_POST["prixTotal"] ?>" />

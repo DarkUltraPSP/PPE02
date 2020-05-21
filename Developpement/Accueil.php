@@ -260,14 +260,16 @@ if (!empty ($_GET['page']))
             
         case "finCommande":
 ?>
-<div class="envoieCommande">
-    Votre commande vient d'etre envoyée !
-</div>
-<div class="tempsPrep">
-    Elle vous sera livrée entre 15min à 45min !
-</div>
-<div class="merci">
-    Merci d'avoir commandé sur notre site ! Et a la prochaine !
+<div class="AllMessageEnvoie">
+    <div class="envoieCommande">
+        Votre commande vient d'etre envoyée !
+    </div>
+    <div class="tempsPrep">
+        Elle vous sera livrée entre 15min à 45min !
+    </div>
+    <div class="merci">
+        Merci d'avoir commandé sur notre site ! Et a la prochaine !
+    </div>
 </div>
 
 <meta http-equiv="refresh" content="10;URL=Accueil.php">
