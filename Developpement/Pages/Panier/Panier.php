@@ -25,7 +25,7 @@ if (!empty($_SESSION["boissons"]))
 <table class="liste">
     <tr>
         <td> Produits </td>
-        <td> Quantite </td>
+        <td> Quantit" </td>
         <td> Prix </td>
     </tr>
     <tr class="titreTab">
@@ -175,7 +175,7 @@ if (isset($_SESSION["tacos"]))
 <div class="validation">
     <form method="POST" action="Accueil.php?page=infoClient">
         <input type="hidden" name="prixTotal" value="<?php echo $prixTotal ?>"/>
-        <input class="validCommande" type="submit" name="validCommande" value="Valider ma commande"/>
+        <input class="bouton" type="submit" name="validCommande" value="Valider ma commande"/>
     </form>
 </div>
 <?php
@@ -183,13 +183,13 @@ if (isset($_SESSION["tacos"]))
 else if (isset ($_SESSION["frites"]) || isset ($_SESSION["boisson"]))
 {
 ?>
-<div class="erreurPanier"> Vous devez commander au moins 1 tacos pour commander des frites et/ou une boisson</div>
+<div class="erreurPanier"> Vous devez commander au moins un tacos pour commander des frites et/ou une boisson.</div>
 <?php
 }
 else if (!isset($_SESSION["tacos"]))
 {
 ?>
-<div class="emptyCart">Votre panier est vide</div>
+<div class="emptyCart">Votre panier est vide.</div>
 <?php
 }
 ?>

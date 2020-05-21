@@ -105,11 +105,6 @@ bouton
 {
     font-size:30px;
 }
-bouton:hover
-{
-    background-color:black;
-    font-color:white;
-}
 
 .numViande
 {
@@ -118,10 +113,17 @@ bouton:hover
     margin-top:0px;
     text-align:center;
 }
-
+.retour
+{
+    text-align: center;
+    font-size: 20px;
+    margin-top:20px;
+}
 .boutons2
 {
-    
+    text-align: center;
+    font-size: 20px;
+    margin-top:20px;
 }
 .allViandes
 {
@@ -193,7 +195,7 @@ bouton:hover
 .choisirQuantite
 {
     text-align:center;
-    padding-top:30px;
+    padding-top:20px;
     width:50%;
     margin-left:25%;
 }
@@ -211,4 +213,22 @@ bouton:hover
     margin-top:30px;
     display:flex;
     justify-content: center;
+}
+
+.quantiteBoisson
+{
+    text-align: center;
+    font-size:30px;
+    border-bottom:solid 2px black;
+    width:60%;
+    margin-left:20%;
+    padding-bottom:10px;
+    margin-bottom: 10px;
+    margin-top:20px;
+}
+.confirmBoisson
+{
+    font-size:20px;
+    text-align: center;
+    margin-top: 30px;
 }

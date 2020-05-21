@@ -56,7 +56,7 @@ if (!isset($_SESSION))
                 
                 case 'panier':
         ?>
-        <link rel="stylesheet" type="text/css" href="Pages/Panier/panier.css" media="all"/>
+        <link rel="stylesheet" type="text/css" href="Pages/Panier/panier" media="all"/>
         <?php
                     break;
                 

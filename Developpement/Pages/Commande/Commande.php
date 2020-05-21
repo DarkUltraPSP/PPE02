@@ -66,7 +66,9 @@ else
         </div>
         <div class ="validation">
             
-            <a class="bouton" href="Accueil.php?page=commander"><button>Retour</button></a>
+            <a class="retour" href="Accueil.php?page=commander">
+                <button class="retour">Retour</button>
+            </a>
             <input class="bouton" type="submit" value="Valider"/>
         </div>
     </form>
@@ -122,7 +124,7 @@ else
                         <input type="checkbox" name="viandes[]" value="<?php echo $viande->getIdViande(); ?>" id="<?php echo $i; ?>"/>
                     </div>
                  </label>
-                <?php
+                <?php 
                             $i++;
                         }
                
@@ -375,7 +377,9 @@ else
                 {
 ?>
 <form method="POST" action="Accueil.php?page=commander&typeProduit=Boissons">
+    <p class="titre">Nos Boissons:</p>
     <div class="bloc-commande">
+        
         <?php
                     foreach ($boissons as $boisson)
                     {
@@ -391,17 +395,21 @@ else
                     }
         ?>
     </div>
-    <input type="submit" value="Valider"/>
+    <div class="validation">
+        <input class="bouton" type="submit" value="Valider"/>
+    </div>
 </form>
 <?php
                 }
                 else //Choix de la quantite (5 max)
                 {
 ?>
-<p> Combien en voulez vous ? </p>
+<p class="quantiteBoisson"> Combien en voulez vous ? </p>
 <form method="POST" action="Accueil.php?page=commander&typeProduit=Boissons">
-    <input type="number" name="quantiteBoisson" value="1" min="1" max="5"/>
-    <input type="submit" value="Valider"/>
+    <div class="choisirQuantite">
+        <input class="bouton" type="number" name="quantiteBoisson" value="1" min="1" max="5"/>
+        <input class="bouton" type="submit" value="Valider"/>
+    </div>
 </form>
 <?php
                 }
@@ -414,14 +422,16 @@ else
                     if ($boisson->getIdBoisson() == $_SESSION["idBoisson"])
                     {
 ?>
-<p> Vous allez ajouter <?php echo $_SESSION["quantiteBoisson"]." ".$boisson->getNomBoisson(); ?> a votre panier </p>
-<form method="POST" action="Accueil.php?page=commander">
-    <input type="hidden" name="confirmationBoisson" value="true"/>
-    <input type="submit" value="Ajouter au panier"/>
-</form>
-<form method="POST" action="Accueil.php?page=commander">
-    <input type="submit" name="delBoisson" value="Annuler"/>
-</form>
+<p class="confirmBoisson"> Souhaitez-vous ajouter <?php echo $_SESSION["quantiteBoisson"]." ".$boisson->getNomBoisson(); ?> à votre panier?</p>
+<div class="boutons2">
+    <form method="POST" action="Accueil.php?page=commander">
+        <input class="bouton" type="hidden" name="confirmationBoisson" value="true"/>
+        <input class="bouton" type="submit" value="Ajouter au panier"/>
+    </form>
+    <form method="POST" action="Accueil.php?page=commander">
+        <input class="bouton"type="submit" name="delBoisson" value="Annuler"/>
+    </form>
+</div>
 <?php
                     }
                 }

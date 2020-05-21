@@ -17,18 +17,11 @@
     font-size:20px;
 }
 
-.validCommande
-{
-    margin-right:0%;
-    margin-top: 20px;
-    display:flex;
-    justify-content:flex-end;
-}
-
 .validation
 {
     width:60%;
     margin-left: 20%;
+    display:flex;    
 }
 .boissons
 {
@@ -43,7 +36,7 @@
 {
     border-top:solid 1px black;
     margin-top:20px;
-    
+    margin-bottom: 20px;
 }
 .emptyCart
 {
@@ -51,4 +44,21 @@
     text-align:center;
     margin-top:20px;
     border-top:solid 2px black;
+}
+.erreurPanier
+{
+    text-align: center;
+    font-size:20px;
+    margin-top:20px;
+    border-top:solid 1px black;
+    width:40%;
+    margin-left:30%;
+    padding-top:10px;
+}
+
+.bouton
+{
+    text-align: center;
+    font-size: 20px;
+    margin-top:20px;
 }
