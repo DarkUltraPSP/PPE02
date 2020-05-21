@@ -126,7 +126,7 @@ else
                             $i++;
                         }
                
-                        ?> 
+                ?> 
                 </div>
             </div>
                 <?php
@@ -294,6 +294,7 @@ else
     </form>
 </div>
 
+
 <?php
             }
             break;
@@ -303,9 +304,12 @@ else
             {
                 if (empty ($_SESSION["idFrites"])) //Choix du type de frites
                 {
-?>
+?>   
+<p class="titre">Nos Frites :</p>
 <form method="POST" action="Accueil.php?page=commander&typeProduit=Frites">
+ 
     <div class="bloc-commande">
+        
         <?php
                     foreach ($frites as $frite)
                     {
@@ -321,18 +325,22 @@ else
                     }
         ?>
     </div>
-    <input type="submit" value="Valider"/>
+    <div class="validation">
+        <input class="bouton" type="submit" value="Valider"/>
+    </div>
 </form>
 <?php
                 }
                 else //Choix de la quantite (5 max)
                 {
 ?>
-<p> Combien en voulez vous ? </p>
-<form method="POST" action="Accueil.php?page=commander&typeProduit=Frites">
-    <input type="number" name="quantiteFrites" value="1" min="1" max="5"/>
-    <input type="submit" value="Valider"/>
-</form>
+<p class="quantiteFrite"> Combien en voulez vous ? </p>
+<div class="choisirQuantite">
+    <form method="POST" action="Accueil.php?page=commander&typeProduit=Frites">
+        <input type="number" name="quantiteFrites" value="1" min="1" max="5"/>
+        <input type="submit" value="Valider" style="width: 80px; height:auto;"/>
+    </form>
+</div>
 <?php
                 } 
             }
@@ -343,14 +351,16 @@ else
                     if ($frite->getIdFrites() == $_SESSION["idFrites"])
                     {
 ?>
-<p> Vous allez ajouter <?php echo $_SESSION["quantiteFrites"]." ".$frite->getNomFrites(); ?> a votre panier </p>
-<form method="POST" action="Accueil.php?page=commander">
-    <input type="hidden" name="confirmationFrites" value="true"/>
-    <input type="submit" value="Ajouter au panier"/>
-</form>
-<form method="POST" action="Accueil.php?page=commander">
-    <input type="submit" name="delFrites" value="Annuler"/>
-</form>
+<p class="confirmFrite"> Souhaitez-vous ajouter <?php echo $_SESSION["quantiteFrites"]." ".$frite->getNomFrites(); ?> à votre panier? </p>
+<div class="boutons2">
+    <form method="POST" action="Accueil.php?page=commander">
+        <input type="hidden" name="confirmationFrites" value="true"/>
+        <input type="submit" value="Ajouter au panier"/>
+    </form>
+    <form method="POST" action="Accueil.php?page=commander">
+        <input type="submit" name="delFrites" value="Annuler"/>
+    </form>
+</div>
 <?php
                     }
                 }

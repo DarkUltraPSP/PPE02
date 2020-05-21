@@ -43,4 +43,12 @@
 {
     border-top:solid 1px black;
     margin-top:20px;
+    
+}
+.emptyCart
+{
+    font-size:20px;
+    text-align:center;
+    margin-top:20px;
+    border-top:solid 2px black;
 }

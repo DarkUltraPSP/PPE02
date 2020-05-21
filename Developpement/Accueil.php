@@ -256,7 +256,7 @@ if (!empty ($_GET['page']))
 else
 {
     ?>
-<h class="bvn"> Bienvenue sur Tacos Of All Time  </h>
+<h class="bvnAccueil"> Bienvenue sur Tacos Of All Time  </h>
 <form method="GET" action="Accueil.php">
     <input type="hidden" name="page" value="commander"/>
     <input type="submit" value="Commander"/>

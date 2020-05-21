@@ -166,7 +166,7 @@ if (!empty($boissonClient))
     }
 }
     ?>
-    <tr>
+    <tr class="caseTotal">
         <td>Prix Total</td>
         <td></td>
         <td> <?php echo $prixTotal." €" ?></td>
