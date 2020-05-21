@@ -104,12 +104,13 @@ class CommandeController
     
     public function setFritesObjet($idFrites, $quantite)
     {
-        $frite = new FritesPanier();
+            $frite = new FritesPanier();
+
+            $frite->setIdFrites($idFrites);
+            $frite->setQuantite($quantite);
+
+            $_SESSION["frites"][] = $frite;
         
-        $frite->setIdFrites($idFrites);
-        $frite->setQuantite($quantite);
-        
-        $_SESSION["frites"][] = $frite;
     }
     
     public function unsetSessionFrites()

@@ -40,4 +40,21 @@ class BoissonPanierManager
         
         return $tabBoissonPanier;
     }
+    
+    public static function insertBoisson($boisson) 
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $idBoisson = $boisson->getIdBoisson();
+        $idPanier = $boisson->getIdPanier();
+        $quantite = $boisson->getQuantite();
+        
+        $state = $login->prepare("INSERT INTO BoissonPanier (idBoisson, idPanier, quantite) VALUES (?,?,?)");
+        
+        $state->bindParam(1, $idBoisson);
+        $state->bindParam(2, $idPanier);
+        $state->bindParam(3, $quantite);
+        
+        $state->execute();
+    }
 }

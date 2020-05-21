@@ -9,7 +9,7 @@ class PanierController
     
     public function refreshPanier()
     {
-        ?>
+?>
 <meta http-equiv="refresh" content="0;URL=Accueil.php?page=panier">
 <?php
     }

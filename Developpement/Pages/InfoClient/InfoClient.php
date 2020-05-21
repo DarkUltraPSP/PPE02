@@ -14,4 +14,3 @@
         <input type="submit" name="envoieCommande" value="Finaliser la commande"/>
     </form>
 </div>
-<?php

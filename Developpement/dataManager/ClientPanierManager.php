@@ -39,4 +39,36 @@ class ClientPanierManager
         
         return $tabClientPanier;
     }
+    
+    public static function insertClientPanier($client)
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $idClient = $client->getIdClient();
+        $idPanier = $client->getIdPanier();
+        
+        $state = $login->prepare("INSERT INTO ClientPanier (idClient, idPanier) VALUES (?,?)");
+        
+        $state->bindParam(1, $idClient);
+        $state->bindParam(2, $idPanier);
+        
+        $state->execute();
+    }
+    
+    public static function getLatestClientID()
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $state = $login->prepare("SELECT idClient FROM Client ORDER BY idClient DESC LIMIT 1");
+        
+        $state->execute();
+        $resultats=$state->fetchAll();
+        
+        foreach($resultats as $lineResultat)
+        {
+            $latestClient = $lineResultat["idClient"];
+        }
+        
+        return $latestClient;
+    }
 }

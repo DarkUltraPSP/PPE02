@@ -57,5 +57,7 @@ class ClientManager
         $state->bindParam(3, $adresse);
         
         $state->execute();
+        
+        $client->setIdClient($login->lastInsertId());
     }
 }

@@ -201,47 +201,86 @@ if (!empty ($_GET['page']))
             {
                 $tacos = $_SESSION["tacos"];
                 
-                if (!empty($_SESSION["boissons"]))
-                {
-                    $boisson = $_SESSION["boissons"];
-                }
-                $infoClient->insertClient($_POST["nom"], $_POST["prenom"], $_POST["adresse"]);
                 $infoClient->createPanier($_POST["prixTotal"]);//Creer un panier en BDD
+                $infoClient->insertClient($_POST["nom"], $_POST["prenom"], $_POST["adresse"]); //Envoie clients en BDD
                 
-                $idPanier = PanierManager::getLatestCartID();
+                $idClient = ClientPanierManager::getLatestClientID(); //Connaitre l'ID du client en BDD
+                $idPanier = PanierManager::getLatestCartID(); //Connaitre le derniner panier crée
+                
+                $infoClient->insertClientPanier($idClient, $idPanier);
                 
                 foreach ($tacos as $t) //Envoie des tacos en BDD
                 {
                     $newTacos = $infoClient->insertTacos($t->getIdTaille(), $t->getIdViande1(), $t->getIdViande2(), $t->getIdViande3(), $t->getIdSauce1(), $t->getIdSauce2());
                     $t->setIdTacos($newTacos->getIdTacos());
-                }
+                    
+                    $infoClient->insertTacosPanier($t->getIdTacos(), $idPanier);
+                }                
                 
-                if (!empty($_SESSION["frites"]))
+                if (!empty($_SESSION["frites"]))//Envoie des frites en BDD
                 {
                     $frites = $_SESSION["frites"];
-                
-                    foreach ($frites as $f) //Envoie des frites en BDD
+                    $fritesBDD = FritesManager::findAllFrites();
+                    
+                    foreach ($fritesBDD as $fBDD)
                     {
-                        $infoClient->insertFrites($f->getIdFrites(), $idPanier, $f->getQuantite());
+                        $quantiteTotaleFrites = 0;
+                        foreach ($frites as $f)
+                        {
+                            if ($f->getIdFrites() == $fBDD->getIdFrites())
+                            {
+                                $quantiteTotaleFrites += $f->getQuantite();
+                            }
+                        }
+                        if ($quantiteTotaleFrites > 0)
+                        {
+                            $infoClient->insertFrites($fBDD->getIdFrites(), $idPanier, $quantiteTotaleFrites);
+                            echo $quantiteTotaleFrites;
+                        }
                     }
                 }
+                
+                if (!empty($_SESSION["boissons"])) //Envoie des Boissons en BDD
+                {
+                    $boisson = $_SESSION["boissons"];
+                    $boissonBDD = BoissonManager::findAllBoissons();
+                    foreach ($boissonBDD as $bBDD)
+                    {
+                        $quantiteTotaleBoisson = 0;
+                        foreach ($boisson as $b)
+                        {
+                            if ($b->getIdBoisson() == $bBDD->getIdBoisson())
+                            {
+                                $quantiteTotaleBoisson += $b->getQuantite();
+                            }
+                        }
+                        if ($quantiteTotaleBoisson > 0)
+                        {
+                            $infoClient->insertBoissons($bBDD->getIdBoisson(), $idPanier, $quantiteTotaleBoisson);
+                        }
+                    }
+                }
+                
+                $infoClient->unsetSession();
+                $infoClient->redirectUser();
             }
             
             break;
             
-        case 'connexion':
-            include_once 'Connexion/Connexion.php';
-            include_once 'Connexion/ConnexionController.php';
-            $instanceController = new ConnexionController();
-            $instanceController->includeView();
-            
-            break;
-        
-        case 'inscription':
-            include_once 'Inscription/Inscription.php';
-            $inscrire = new insertUser();
-            $inscrire->includeView();
-            
+        case "finCommande":
+?>
+<div class="envoieCommande">
+    Votre commande vient d'etre envoyée !
+</div>
+<div class="tempsPrep">
+    Elle vous sera livrée entre 15min à 45min !
+</div>
+<div class="merci">
+    Merci d'avoir commandé sur notre site ! Et a la prochaine !
+</div>
+
+<meta http-equiv="refresh" content="10;URL=Accueil.php">
+<?php
             break;
         
         case "contact":
