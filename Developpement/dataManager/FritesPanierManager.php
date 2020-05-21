@@ -51,5 +51,10 @@ class FritesPanierManager
         
         $state = $login->prepare("INSERT INTO FritesPanier (idFrites, idPanier, quantite) VALUES (?,?,?)");
         
+        $state->bindParam(1, $idFrites);
+        $state->bindParam(2, $idPanier);
+        $state->bindParam(3, $quantite);
+        
+        $state->execute();
     }
 }

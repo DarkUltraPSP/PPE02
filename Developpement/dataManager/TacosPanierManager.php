@@ -39,4 +39,19 @@ class TacosPanierManager
         
         return $tabTacosP;
     }
+    
+        public static function insertClientPanier($tacos)
+    {
+        $login = databaseLinker::getConnexion();
+        
+        $idTacos = $tacos->getIdTacos();
+        $idPanier = $tacos->getIdPanier();
+        
+        $state = $login->prepare("INSERT INTO TacosPanier (idTacos, idPanier) VALUES (?,?)");
+        
+        $state->bindParam(1, $idTacos);
+        $state->bindParam(2, $idPanier);
+        
+        $state->execute();
+    }
 }

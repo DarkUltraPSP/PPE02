@@ -89,27 +89,6 @@ class TacosManager
         }
         $state->execute();
         
-        
         $tacos->setIdTacos($login->lastInsertId());
-    }
-    
-    public static function getLatestTacosID($nbTacos)
-    {
-        $login = databaseLinker::getConnexion();
-        $latestTacos = [];
-        
-        $state = $login->prepare("SELECT idTacos FROM Tacos ORDER BY idTacos DESC LIMIT ?");
-        
-        $state->bindParam(1, $nbTacos);
-        
-        $state->execute();
-        $resultats=$state->fetchAll();
-        
-        foreach($resultats as $lineResultat)
-        {
-            $latestTacos[] = $lineResultat["idTacos"];
-        }
-        
-        return $latestTacos;
     }
 }

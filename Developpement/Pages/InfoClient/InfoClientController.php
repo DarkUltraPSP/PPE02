@@ -16,6 +16,7 @@ class InfoClientController
         $client->setAdresse($adresse);
         
         ClientManager::insertClient($client);
+        return $client;
     }
     
     public function createPanier($prixTotal)
@@ -25,6 +26,16 @@ class InfoClientController
         $panier->setPrix($prixTotal);
         
         PanierManager::insertPrixTotal($panier);
+    }
+    
+    public function insertClientPanier($idClient, $idPanier)
+    {
+        $clientPanier = new ClientPanier();
+        
+        $clientPanier->setIdClient($idClient);
+        $clientPanier->setIdPanier($idPanier);
+        
+        ClientPanierManager::insertClientPanier($clientPanier);
     }
     
     public function insertTacos($size, $viande1, $viande2, $viande3, $sauce1, $sauce2)
@@ -40,6 +51,16 @@ class InfoClientController
         
         TacosManager::insertTacos($tacos);
         return $tacos;
+    }
+    
+    public function insertTacosPanier($idTacos, $idPanier)
+    {
+        $tacosPanier = new TacosPanier();
+        
+        $tacosPanier->setIdPanier($idPanier);
+        $tacosPanier->setIdTacos($idTacos);
+        
+        TacosPanierManager::insertClientPanier($tacosPanier);
     }
 
     public function insertFrites($idFrites, $idPanier, $quantite)
@@ -61,5 +82,21 @@ class InfoClientController
         $boisson->setIdBoisson($idBoisson);
         $boisson->setIdPanier($idPanier);
         $boisson->setQuantite($quantite);
+        
+        BoissonPanierManager::insertBoisson($boisson);
+    }
+    
+    public function unsetSession()
+    {
+        unset($_SESSION["tacos"]);        
+        unset($_SESSION["frites"]);
+        unset($_SESSION["boissons"]);
+    }
+    
+    public function redirectUser()
+    {
+?>
+<meta http-equiv="refresh" content="0;URL=Accueil.php?page=finCommande">
+<?php
     }
 }

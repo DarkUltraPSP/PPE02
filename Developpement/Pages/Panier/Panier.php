@@ -1,8 +1,4 @@
 <?php
-$panier = PanierManager::findAllPaniers();
-$tacos = TacosManager::findAllTacos();
-$fritesClient = FritesPanierManager::findAllFritesPanier();
-$boissonClient = BoissonPanierManager::findAllBoissonsPanier();
 $prixTotal = 0.0;
 
 $tailles = TailleManager::findAllTailles();
