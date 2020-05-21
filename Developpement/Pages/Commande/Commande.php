@@ -45,6 +45,9 @@ else
                 {
     ?>
     <div class="divTitre">
+        <a class="retour" href="Accueil.php?page=commander">
+            <button class="retour">Retour</button>
+        </a>
         <h class="selectSize"> Selectionnez la taille de votre Tacos </h>
     </div>
     <form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
@@ -65,10 +68,6 @@ else
         ?>
         </div>
         <div class ="validation">
-            
-            <a class="retour" href="Accueil.php?page=commander">
-                <button class="retour">Retour</button>
-            </a>
             <input class="bouton" type="submit" value="Valider"/>
         </div>
     </form>
@@ -82,7 +81,7 @@ else
     ?>
     <div class="divTitre">
         <form method="POST" action="Accueil.php?page=commander&typeProduit=Tacos">
-        <input type="submit" name="retourSize" value="Retour"/>
+            <input type="submit" name="retourSize" value="Retour"/>
         </form>
         <form method="POST" action="Accueil.php?page=commander">
             <input type="submit" name="delTacos" value="Annuler"/>

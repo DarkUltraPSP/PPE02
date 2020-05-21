@@ -1,4 +1,29 @@
+.Allbnv
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.bvnOn
+{
+    text-align: center;
+}
+
 .bvnAccueil
 {
     font-size:50px;
+}
+
+.tacosOfAllTime
+{
+    font-size: 100px;
+    text-decoration: underline;
+}
+
+.presentation
+{
+    margin: 50px;
 }

@@ -25,7 +25,7 @@ if (!empty($_SESSION["boissons"]))
 <table class="liste">
     <tr>
         <td> Produits </td>
-        <td> Quantit" </td>
+        <td> Quantité </td>
         <td> Prix </td>
     </tr>
     <tr class="titreTab">

@@ -56,7 +56,7 @@ if (!isset($_SESSION))
                 
                 case 'panier':
         ?>
-        <link rel="stylesheet" type="text/css" href="Pages/Panier/panier" media="all"/>
+        <link rel="stylesheet" type="text/css" href="Pages/Panier/panier.css" media="all"/>
         <?php
                     break;
                 
@@ -84,6 +84,12 @@ if (!isset($_SESSION))
         <?php
                     break;
             }
+        }
+        else
+        {
+        ?>
+        <link rel="stylesheet" type="text/css" href="Pages/Accueil/accueil.css" media="all"/>
+        <?php
         }
         ?>
         
